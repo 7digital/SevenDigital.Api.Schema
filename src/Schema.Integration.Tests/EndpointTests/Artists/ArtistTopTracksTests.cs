@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Wrapper.Http;
@@ -20,7 +21,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			
 			var artistTopTracks = await _fluentApi
@@ -33,7 +34,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_static_fluent_interface()
+		public async Task Can_hit_endpoint_with_static_fluent_interface()
 		{
 			var artistTopTracks = await Api<ArtistTopTracks>
 				.Create
@@ -46,7 +47,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_handle_out_of_range_request()
+		public async Task Can_handle_out_of_range_request()
 		{
 			var artistTopTracks = await _fluentApi
 				.WithParameter("artistId", "1")

@@ -13,7 +13,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		private const int EXPECTED_TRACK_ID = 1693930;
 
 		[Test]
-		public async void Can_retrieve_a_basket()
+		public async Task Can_retrieve_a_basket()
 		{
 			var basketId = await MakeBasket();
 
@@ -26,7 +26,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		}
 
 		[Test]
-		public async void Can_add_and_remove_release_to_a_basket()
+		public async Task Can_add_and_remove_release_to_a_basket()
 		{
 			var basketId = await MakeBasket();
 
@@ -53,7 +53,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		}
 
 		[Test]
-		public async void Can_add_and_remove_track_to_a_basket()
+		public async Task Can_add_and_remove_track_to_a_basket()
 		{
 			var basketId = await MakeBasket();
 
@@ -80,7 +80,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		}
 
 		[Test]
-		public async void Should_show_amount_due()
+		public async Task Should_show_amount_due()
 		{
 			var basketId = await MakeBasket();
 

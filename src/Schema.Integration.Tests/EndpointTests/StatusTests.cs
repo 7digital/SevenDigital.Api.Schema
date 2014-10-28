@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 
@@ -8,7 +9,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests
 	public class StatusTests
 	{
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var status = await Api<Status>.Create.Please();
 

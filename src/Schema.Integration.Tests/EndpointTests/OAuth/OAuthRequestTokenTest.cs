@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.OAuth;
 using SevenDigital.Api.Wrapper;
@@ -9,7 +10,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.OAuth
 	public class OAuthRequestTokenTest
 	{
 		[Test]
-		public async void Should_not_throw_unauthorised_exception_if_correct_creds_passed() 
+		public async Task Should_not_throw_unauthorised_exception_if_correct_creds_passed() 
 		{
 			var oAuthRequestToken = await Api<OAuthRequestToken>.Create.Please();
 			Assert.That(oAuthRequestToken.Secret, Is.Not.Empty);
@@ -17,7 +18,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.OAuth
 		}
 
 		[Test]
-		public async void Should_allow_POSTing_to_request_token_endpoint()
+		public async Task Should_allow_POSTing_to_request_token_endpoint()
 		{
 			var api = (FluentApi<OAuthRequestToken>) Api<OAuthRequestToken>.Create;
 
@@ -40,7 +41,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.OAuth
 		}
 
 		[Test]
-		public async void Can_handle_odd_characters_in_get_signing_process()
+		public async Task Can_handle_odd_characters_in_get_signing_process()
 		{
 			var oAuthRequestToken = await Api<OAuthRequestToken>
 				.Create
@@ -52,7 +53,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.OAuth
 		}
 
 		[Test]
-		public async void Can_handle_odd_characters_in_post_signing_process()
+		public async Task Can_handle_odd_characters_in_post_signing_process()
 		{
 			var api = (FluentApi<OAuthRequestToken>) Api<OAuthRequestToken>.Create;
 

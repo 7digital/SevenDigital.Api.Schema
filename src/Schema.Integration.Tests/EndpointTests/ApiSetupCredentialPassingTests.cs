@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Wrapper.Http;
@@ -28,7 +29,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests
 	public class ApiSetupCredentialPassingTests
 	{
 		[Test]
-		public async void Can_hit_endpoint_if_I_pass_credentials_into_api()
+		public async Task Can_hit_endpoint_if_I_pass_credentials_into_api()
 		{
 			IApi api = new ApiWithCredentials();
 			var request = api.Create<Status>();
@@ -39,7 +40,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_if_I_pass_credentials_into_static_api()
+		public async Task Can_hit_endpoint_if_I_pass_credentials_into_static_api()
 		{
 			StaticApiFactory.Factory = new ApiWithCredentials();
 

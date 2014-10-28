@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Schema.Charts;
@@ -11,7 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	public class ArtistChartTests
 	{
 		[Test]
-		public async void Can_hit_fluent_endpoint()
+		public async Task Can_hit_fluent_endpoint()
 		{
 			var chartDate = DateTime.Today.AddDays(-7);
 

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Wrapper;
 
@@ -8,7 +9,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	public class ArtistDetailsTests
 	{
 		[Test]
-		public async void Can_hit_endpoint_with_fluent_interface()
+		public async Task Can_hit_endpoint_with_fluent_interface()
 		{
 			var request = Api<Artist>
 				.Create

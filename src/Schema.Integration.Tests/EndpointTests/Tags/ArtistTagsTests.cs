@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using SevenDigital.Api.Wrapper;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Tags;
@@ -9,7 +10,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 	public class ArtistTagsTests
 	{
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = Api<ArtistTags>.Create
 				.WithParameter("artistId", "1");
@@ -22,7 +23,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<ArtistTags>.Create
 				.WithParameter("artistId", "2")

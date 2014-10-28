@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Charts;
@@ -11,7 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	public class TrackChartTests
 	{
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = Api<TrackChart>.Create
 				.WithParameter("fromDate", "20110101")
@@ -28,7 +29,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<TrackChart>.Create
 				.WithParameter("fromDate", "20090610")
@@ -43,7 +44,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
-		public async void Can_hit_fluent_endpoint()
+		public async Task Can_hit_fluent_endpoint()
 		{
 			var request = Api<TrackChart>
 				.Create

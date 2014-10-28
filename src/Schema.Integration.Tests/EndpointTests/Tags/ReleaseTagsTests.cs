@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Tags;
@@ -11,7 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		private const int LilyAllenAirBalloon = 3228088;
 
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			const string ExpectedTagId = "pop";
 
@@ -31,7 +32,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<ReleaseTags>.Create
 				.ForReleaseId(LilyAllenAirBalloon)

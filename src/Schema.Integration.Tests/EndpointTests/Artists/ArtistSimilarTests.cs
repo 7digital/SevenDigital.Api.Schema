@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Wrapper;
 
@@ -7,7 +8,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	public class ArtistSimilarTests
 	{
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = Api<ArtistSimilar>
 				.Create
@@ -19,7 +20,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_get_multiple_results()
+		public async Task Can_get_multiple_results()
 		{
 			var request = Api<ArtistSimilar>.Create
 				.WithArtistId(1)
@@ -31,7 +32,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_do_paging()
+		public async Task Can_do_paging()
 		{
 			var request = Api<ArtistSimilar>
 				.Create
@@ -42,10 +43,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 
 			Assert.That(artistSimilar.Page, Is.EqualTo(2));
 			Assert.That(artistSimilar.Artists.Count, Is.EqualTo(2));
-
 		}
 	}
-
-
-	
 }

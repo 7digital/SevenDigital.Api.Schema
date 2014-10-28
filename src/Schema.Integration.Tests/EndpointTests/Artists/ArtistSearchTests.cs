@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Wrapper.Http;
@@ -20,7 +21,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = _fluentApi
 				.WithParameter("q", "pink")
@@ -31,7 +32,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 		
 		[Test]
-		public async void Can_get_multiple_results()
+		public async Task Can_get_multiple_results()
 		{
 			var request = _fluentApi
 				.ForShop(34)
@@ -44,7 +45,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_static_interface()
+		public async Task Can_hit_endpoint_with_static_interface()
 		{
 			var request = Api<ArtistSearch>
 				.Create
@@ -56,7 +57,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<ArtistSearch>.Create
 				.WithParameter("q", "pink")
@@ -70,7 +71,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_get_multiple_results_with_static_interface()
+		public async Task Can_get_multiple_results_with_static_interface()
 		{
 			var request = Api<ArtistSearch>.Create
 				.WithParameter("q", "pink")

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Wrapper;
@@ -8,9 +9,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	[TestFixture]
 	public class ArtistReleasesTests
 	{
-
 		[Test]
-		public async void Can_hit_endpoint_with_fluent_interface()
+		public async Task Can_hit_endpoint_with_fluent_interface()
 		{
 			var request = Api<ArtistReleases>
 				.Create
@@ -23,7 +23,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<ArtistReleases>
 				.Create

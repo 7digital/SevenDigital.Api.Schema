@@ -67,7 +67,6 @@
     <Compile Include="EndpointTests\Releases\ReleaseByDateTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleaseChartTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleaseDetailsTests.cs" />
-    <Compile Include="EndpointTests\Releases\ReleaseEditorialTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleaseRecommendTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleaseSearchTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleaseTracksTests.cs" />

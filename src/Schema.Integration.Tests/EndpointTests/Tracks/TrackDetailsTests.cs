@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Tracks;
 
@@ -8,7 +9,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	public class TrackDetailsTests
 	{
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = Api<Track>.Create.ForTrackId(12345);
 			var track = await request.Please();

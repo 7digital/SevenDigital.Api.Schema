@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Tags;
@@ -11,7 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		private const string Tags = "rock,pop";
 
 		[Test]
-		public async void Can_hit_endpoint()
+		public async Task Can_hit_endpoint()
 		{
 			var request = Api<ArtistByTagTop>.Create
 				.WithParameter("tags", Tags);
@@ -24,7 +25,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		}
 
 		[Test]
-		public async void Can_hit_endpoint_with_paging()
+		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = Api<ArtistByTagTop>.Create
 				.WithParameter("tags", Tags)
