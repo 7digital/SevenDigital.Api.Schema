@@ -16,5 +16,10 @@ namespace SevenDigital.Api.Schema.Tags
 
 		[XmlElement("count")]
 		public int Count { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1}", Id, Text);
+		}
 	}
 }

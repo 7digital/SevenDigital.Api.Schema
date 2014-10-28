@@ -19,5 +19,10 @@ namespace SevenDigital.Api.Schema.Translations
 
 		[XmlElement("translatedText")]
 		public string TranslatedText { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1}", Key, TranslatedText);
+		}
 	}
 }

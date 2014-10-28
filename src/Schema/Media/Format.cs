@@ -16,5 +16,10 @@ namespace SevenDigital.Api.Schema.Media
 
 		[XmlElement("drmFree")]
 		public bool DrmFree { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1} {2}", Id, FileFormat, BitRate);
+		}
 	}
 }

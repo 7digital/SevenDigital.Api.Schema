@@ -12,5 +12,10 @@ namespace SevenDigital.Api.Schema.Territories
 
 		[XmlElement("url")]
 		public string Url { get; set; }
+
+		public override string ToString()
+		{
+			return Description;
+		}
 	}
 }

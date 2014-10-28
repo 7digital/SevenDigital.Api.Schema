@@ -22,5 +22,10 @@ namespace SevenDigital.Api.Schema.Territories
 		[XmlArrayItem("language")]
 		[XmlArray("languages")]
 		public List<Language> Languages { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1}", Code, Description);
+		}
 	}
 }

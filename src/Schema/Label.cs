@@ -10,5 +10,10 @@ namespace SevenDigital.Api.Schema
 
 		[XmlElement("name")]
 		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1}", Id, Name);
+		}
 	}
 }

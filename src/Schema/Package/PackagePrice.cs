@@ -12,5 +12,10 @@ namespace SevenDigital.Api.Schema.Package
 
 		[XmlElement("recommendedRetailPrice", IsNullable = true)]
 		public decimal? RecommendedRetailPrice { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0} {1}", CurrencyCode, RecommendedRetailPrice);
+		}
 	}
 }

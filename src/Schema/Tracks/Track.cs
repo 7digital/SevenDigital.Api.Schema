@@ -74,5 +74,10 @@ namespace SevenDigital.Api.Schema.Tracks
 
 		[XmlElement("download")]
 		public PackageList Download { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1} {2} {3}, ISRC: {4}", Id, Title, Version, Type, Isrc);
+		}
 	}
 }

@@ -18,5 +18,10 @@ namespace SevenDigital.Api.Schema.Package
 		[XmlArray("formats")]
 		[XmlArrayItem("format")]
 		public List<PackageFormat> Formats { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}: {1}", Id, Description);
+		}
 	}
 }

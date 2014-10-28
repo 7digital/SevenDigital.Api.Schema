@@ -14,5 +14,10 @@ namespace SevenDigital.Api.Schema.Charts
 
 		[XmlElement("release")]
 		public Release Release { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}, Release {1}", Position, Release);
+		}
 	}
 }

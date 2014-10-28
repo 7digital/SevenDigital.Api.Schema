@@ -8,5 +8,10 @@ namespace SevenDigital.Api.Schema.Tags
 	{
 		[XmlElement("artist")]
 		public Artist Artist { get; set; }
+
+		public override string ToString()
+		{
+			return Artist != null ? Artist.ToString() : string.Empty;
+		}
 	}
 }

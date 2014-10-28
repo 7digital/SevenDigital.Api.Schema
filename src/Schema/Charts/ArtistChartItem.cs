@@ -14,5 +14,10 @@ namespace SevenDigital.Api.Schema.Charts
 
 		[XmlElement("artist")]
 		public Artist Artist { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}, Artist {1}", Position, Artist);
+		}
 	}
 }

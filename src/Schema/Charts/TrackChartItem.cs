@@ -14,5 +14,10 @@ namespace SevenDigital.Api.Schema.Charts
 
 		[XmlElement("track")]
 		public Track Track { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("{0}, Track {1}", Position, Track);
+		}
 	}
 }
