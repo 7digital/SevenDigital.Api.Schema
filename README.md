@@ -1,4 +1,5 @@
-SevenDigital.Api.Schema
-=======================
+![7digital](http://i.imgur.com/StUnvCy.png?1)
 
-Schema for the 7digital Public API
+What is this code?
+========
+Schema in C# for public 7digital Api endpoints. See [The Api Wrapper](https://github.com/7digital/SevenDigital.Api.Wrapper).
