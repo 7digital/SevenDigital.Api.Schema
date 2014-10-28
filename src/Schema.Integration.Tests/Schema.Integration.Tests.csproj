@@ -30,20 +30,72 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="OAuth">
+      <HintPath>..\..\packages\OAuth.1.0.3\lib\net40\OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenDigital.Api.Wrapper">
+      <HintPath>..\..\packages\SevenDigital.Api.Wrapper.4.3.1\lib\net45\SevenDigital.Api.Wrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiUri.cs" />
+    <Compile Include="AppSettingsCredentials.cs" />
+    <Compile Include="EndpointTests\ApiSetupCredentialPassingTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistBrowseTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistChartTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistDetailsTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistReleasesTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistSearchTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistSimilarTests.cs" />
+    <Compile Include="EndpointTests\Artists\ArtistTopTracksTests.cs" />
+    <Compile Include="EndpointTests\Baskets\BasketCreateTests.cs" />
+    <Compile Include="EndpointTests\OAuth\OAuthRequestTokenTest.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseByDateTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseChartTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseDetailsTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseEditorialTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseRecommendTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseSearchTests.cs" />
+    <Compile Include="EndpointTests\Releases\ReleaseTracksTests.cs" />
+    <Compile Include="EndpointTests\StatusTests.cs" />
+    <Compile Include="EndpointTests\Tags\ArtistByTagTopTests.cs" />
+    <Compile Include="EndpointTests\Tags\ArtistTagsTests.cs" />
+    <Compile Include="EndpointTests\Tags\ReleaseByTagNewTests.cs" />
+    <Compile Include="EndpointTests\Tags\ReleaseByTagTopTests.cs" />
+    <Compile Include="EndpointTests\Tags\ReleaseTagsTests.cs" />
+    <Compile Include="EndpointTests\Tags\TagsTests.cs" />
+    <Compile Include="EndpointTests\Tracks\TrackChartTests.cs" />
+    <Compile Include="EndpointTests\Tracks\TrackDetailsTests.cs" />
+    <Compile Include="EndpointTests\Tracks\TrackPreviewTests.cs" />
+    <Compile Include="EndpointTests\Tracks\TrackSearchTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataFromEnvironmentOrAppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App.inttest.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Schema\Schema.csproj">
+      <Project>{4720f451-2f06-45b4-99e2-6f8f0900ba06}</Project>
+      <Name>Schema</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

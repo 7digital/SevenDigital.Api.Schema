@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema", "src\Schema\Schema
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.Unit.Tests", "src\Schema.Unit.Tests\Schema.Unit.Tests.csproj", "{116B4D15-FD8A-42BF-BE8C-FA77ED6531EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.Integration.Tests", "SevenDigital.Api.Schema.Integration.Tests\Schema.Integration.Tests.csproj", "{5D819B06-33E5-4431-8B5B-BC135AEA2829}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema.Integration.Tests", "src\Schema.Integration.Tests\Schema.Integration.Tests.csproj", "{5D819B06-33E5-4431-8B5B-BC135AEA2829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
