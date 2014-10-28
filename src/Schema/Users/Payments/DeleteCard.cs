@@ -2,7 +2,7 @@
 using SevenDigital.Api.Schema.OAuth;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
-namespace SevenDigital.Api.Schema.Users.Payment
+namespace SevenDigital.Api.Schema.Users.Payments
 {
 	[ApiEndpoint("user/payment/card/delete")]
 	[OAuthSigned]
