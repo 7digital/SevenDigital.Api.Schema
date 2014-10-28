@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SevenDigital.Api.Schema</id>
+    <version>#version#</version>
+    <authors>7digital</authors>
+    <owners>7digital</owners>
+    <projectUrl>https://github.com/7digital/SevenDigital.Api.Schema</projectUrl>
+	<iconUrl>https://1.gravatar.com/avatar/793d9bae7c57fb6375a9e5bb2ecd6061</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Schema in .Net for the 7digital Public API.</description>
+    <copyright>Copyright 7digital Media Ltd. 2014</copyright>
+    <tags>7digital sevendigital music api</tags>
+  </metadata>
+  <files>
+	<file src="..\src\Schema\bin\Debug\SevenDigital.Api.Schema.dll" target="lib\net40" /> 
+  </files>
+</package>
