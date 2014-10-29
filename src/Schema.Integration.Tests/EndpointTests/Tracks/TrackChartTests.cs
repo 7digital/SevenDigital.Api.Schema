@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Charts;
 using SevenDigital.Api.Schema.Tracks;
@@ -11,10 +12,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	[TestFixture]
 	public class TrackChartTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<TrackChart>.Create
+			var request = _api.Create<TrackChart>()
 				.WithParameter("fromDate", "20110101")
 				.WithParameter("toDate", "20110301")
 				.WithParameter("country", "GB");
@@ -31,7 +40,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Can_hit_endpoint_with_paging()
 		{
-			var request = Api<TrackChart>.Create
+			var request = _api.Create<TrackChart>()
 				.WithParameter("fromDate", "20090610")
 				.WithParameter("toDate", "20110101")
 				.WithParameter("page", "2")
@@ -46,8 +55,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Can_hit_fluent_endpoint()
 		{
-			var request = Api<TrackChart>
-				.Create
+			var request = _api.Create<TrackChart>()
 				.WithToDate(new DateTime(2011, 01, 31))
 				.WithPeriod(ChartPeriod.Week);
 			var trackChart = await request.Please();

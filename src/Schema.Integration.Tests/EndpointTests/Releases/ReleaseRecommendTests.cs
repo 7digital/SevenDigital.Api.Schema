@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Releases;
 
@@ -8,10 +9,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[TestFixture]
 	public class ReleaseRecommendTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<ReleaseRecommend>.Create
+			var request = _api.Create<ReleaseRecommend>()
 				.ForReleaseId(155408)
 				.WithParameter("country", "GB");
 			var release = await request.Please();

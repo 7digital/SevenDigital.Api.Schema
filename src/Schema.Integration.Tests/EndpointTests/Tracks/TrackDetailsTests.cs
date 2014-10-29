@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Tracks;
 
@@ -8,10 +9,19 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	[TestFixture]
 	public class TrackDetailsTests
 	{
-		[Test]
-		public async Task Can_hit_endpoint()
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
 		{
-			var request = Api<Track>.Create.ForTrackId(12345);
+			_api = new ApiConnection();
+		}
+		
+		[Test]
+		public async Task Can_hit_track_endpoint()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345);
 			var track = await request.Please();
 
 			Assert.That(track, Is.Not.Null);
@@ -19,10 +29,46 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.TrackNumber, Is.EqualTo(5));
 			Assert.That(track.Number, Is.EqualTo(5));
 			Assert.That(track.DiscNumber, Is.EqualTo(1));
-			
+		}
+
+		[Test]
+		public async Task Track_has_artist()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345);
+			var track = await request.Please();
+
+			Assert.That(track, Is.Not.Null);
+			Assert.That(track.Artist, Is.Not.Null);
 			Assert.That(track.Artist.Id, Is.EqualTo(437));
 			Assert.That(track.Artist.Name, Is.EqualTo("The Dandy Warhols"));
 			Assert.That(track.Artist.AppearsAs, Is.EqualTo("The Dandy Warhols"));
+		}
+
+		[Test]
+		public async Task Track_has_release()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345);
+			var track = await request.Please();
+
+			Assert.That(track, Is.Not.Null);
+			Assert.That(track.Release, Is.Not.Null);
+			Assert.That(track.Release.Id, Is.GreaterThan(0));
+			Assert.That(track.Release.Title, Is.Not.Empty);
+		}
+
+		[Test]
+		public async Task Track_has_packages()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345);
+			var track = await request.Please();
+
+			Assert.That(track, Is.Not.Null);
+			Assert.That(track.Download, Is.Not.Null);
+			Assert.That(track.Download.Packages, Is.Not.Null);
+			Assert.That(track.Download.Packages.Count, Is.GreaterThan(0));
 
 			Assert.That(track.Download.Packages[0].Id, Is.EqualTo(2));
 			Assert.That(track.Download.Packages[0].Description, Is.EqualTo("standard"));

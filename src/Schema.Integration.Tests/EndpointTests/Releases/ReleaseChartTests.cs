@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Charts;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Schema.Releases;
 using SevenDigital.Api.Wrapper;
 
@@ -12,10 +13,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[Category("Integration")]
 	public class ReleaseChartTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<ReleaseChart>.Create
+			var request = _api.Create<ReleaseChart>()
 				.WithParameter("fromDate", "20110101")
 				.WithParameter("toDate", "20110301")
 				.WithParameter("country", "GB");
@@ -31,7 +40,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		[Test]
 		public async Task Can_hit_endpoint_with_paging()
 		{
-			var request = Api<ReleaseChart>.Create
+			var request = _api.Create<ReleaseChart>()
 				.WithParameter("fromDate", "20090610")
 				.WithParameter("toDate", "20110101")
 				.WithParameter("page", "2")
@@ -46,8 +55,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		[Test]
 		public async Task Can_hit_fluent_endpoint()
 		{
-			var request = Api<ReleaseChart>
-				.Create
+			var request = _api.Create<ReleaseChart>()
 				.WithToDate(new DateTime(2011, 01, 31))
 				.WithPeriod(ChartPeriod.Week);
 			var releaseChart = await request.Please();

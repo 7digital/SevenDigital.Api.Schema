@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 using SevenDigital.Api.Schema.Pricing;
 using SevenDigital.Api.Schema.Releases;
@@ -10,10 +11,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[TestFixture]
 	public class ReleaseTracksTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<ReleaseTracks>.Create
+			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(1996067);
 			var releaseTracks = await request.Please();
 
@@ -34,7 +43,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		[Test]
 		public async Task can_determine_if_a_track_is_free()
 		{
-			var request = Api<ReleaseTracks>.Create
+			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(394123);
 			var releaseTracks = await request.Please();
 
@@ -46,7 +55,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		[Test]
 		public async Task can_determine_if_a_track_is_available_separately()
 		{
-			var request = Api<ReleaseTracks>.Create
+			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(1193196);
 			var releaseTracks = await request.Please();
 

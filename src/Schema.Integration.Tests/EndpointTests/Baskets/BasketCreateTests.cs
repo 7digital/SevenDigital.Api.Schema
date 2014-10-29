@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Baskets;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
@@ -12,12 +13,20 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		private const int EXPECTED_RELEASE_ID = 160553;
 		private const int EXPECTED_TRACK_ID = 1693930;
 
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+
 		[Test]
 		public async Task Can_retrieve_a_basket()
 		{
 			var basketId = await MakeBasket();
 
-			var request = Api<Basket>.Create
+			var request = _api.Create<Basket>()
 				.UseBasketId(basketId);
 			var basket = await request.Please();
 
@@ -30,7 +39,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		{
 			var basketId = await MakeBasket();
 
-			var request = Api<AddItemToBasket>.Create
+			var request = _api.Create<AddItemToBasket>()
 				.UseBasketId(basketId)
 				.ForReleaseId(EXPECTED_RELEASE_ID);
 			var basketAdded = await request.Please();
@@ -42,7 +51,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			int toRemove = basketAdded.BasketItems.Items.FirstOrDefault().Id;
 
-			var removeRequest = Api<RemoveItemFromBasket>.Create
+			var removeRequest = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)
 				.BasketItemId(toRemove);
 			var basketRemoved = await removeRequest.Please();
@@ -57,7 +66,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		{
 			var basketId = await MakeBasket();
 
-			var addRequest = Api<AddItemToBasket>.Create
+			var addRequest = _api.Create<AddItemToBasket>()
 				.UseBasketId(basketId)
 				.ForReleaseId(EXPECTED_RELEASE_ID)
 				.ForTrackId(EXPECTED_TRACK_ID);
@@ -69,7 +78,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			int toRemove = basketAdded.BasketItems.Items.FirstOrDefault().Id;
 
-			var request = Api<RemoveItemFromBasket>.Create
+			var request = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)
 				.BasketItemId(toRemove);
 			var basketRemoved = await request.Please();
@@ -84,7 +93,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 		{
 			var basketId = await MakeBasket();
 
-			var request = Api<AddItemToBasket>.Create
+			var request = _api.Create<AddItemToBasket>()
 				.UseBasketId(basketId)
 				.ForReleaseId(EXPECTED_RELEASE_ID);
 			var basket = await request.Please();
@@ -97,7 +106,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 		private async Task<string> MakeBasket()
 		{
-			var createBasketRequest = Api<CreateBasket>.Create
+			var createBasketRequest = _api.Create<CreateBasket>()
 				.WithParameter("country", "GB");
 			var basketCreate = await createBasketRequest.Please();
 

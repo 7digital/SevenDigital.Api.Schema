@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Schema.Releases;
 using SevenDigital.Api.Wrapper;
 
@@ -10,10 +11,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[Category("Integration")]
 	public class ReleaseDetailsTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<Release>.Create
+			var request = _api.Create<Release>()
 				.ForReleaseId(1685647)
 				.WithParameter("country", "GB");
 			var release = await request.Please();
