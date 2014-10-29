@@ -2,18 +2,20 @@
 
 What is this code?
 ========
-Schema in C# for public 7digital Api endpoints. See [The Api Wrapper](https://github.com/7digital/SevenDigital.Api.Wrapper).
+Schema in C# for public 7digital Api endpoints. These definitions are used by and installed with [The Api Wrapper](https://github.com/7digital/SevenDigital.Api.Wrapper). If you're new, start there.
+
+These definitions can be useful on their own if you want to roll your own http communication to the 7digital Api, but want objects to de-serialise output into.
 
 
-Notes
+Notes for coders
 =====
 
-* The schema is compiled as a portable class library. Therefore certain attributes such as `[Serializable]` and `[DataContract]` are not available. They should not be needed.
-* To avoid name clashes, the folder name is plural, the classes inside it are singular. e.g. class `Release` in namespace  `Releases`.
+* The code is compiled as a portable class library for use from many different .Net versions. Therefore certain attributes such as `[Serializable]` and `[DataContract]` are not available. They should not be needed.
+* To avoid name clashes, the folder name and corresponding namespace is plural, the classes inside it are singular. e.g. class `Release` in namespace  `Releases`. i.e. The fully qualified name is `SevenDigital.Api.Schema.Releases.Release`.
 * Use tabs not spaces.
 
-### Attributes ###
+### Output generation as XML and json ###
 
 * The `[XmlElement()]` or `[XmlAttribute()]` attributes gives the name when generating or reading from xml, the property name (lowercased) is used for json. Both should be meaningful.
-* The `[XmlRoot()]` element is only needed on the root of the DTO, i.e. where the `[ApiEndpoint]` attribute is also found.
+* The `[XmlRoot()]` element is only needed on the root object, i.e. where the `[ApiEndpoint]` attribute is also found.
 
