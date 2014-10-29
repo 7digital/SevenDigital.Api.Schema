@@ -20,9 +20,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Can_hit_track_endpoint()
 		{
-			var request = _api.Create<Track>()
-				.ForTrackId(12345);
-			var track = await request.Please();
+			var track = await GetTestTrack();
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Title, Is.EqualTo("I Love You"));
@@ -34,9 +32,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Track_has_artist()
 		{
-			var request = _api.Create<Track>()
-				.ForTrackId(12345);
-			var track = await request.Please();
+			var track = await GetTestTrack();
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Artist, Is.Not.Null);
@@ -48,9 +44,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Track_has_release()
 		{
-			var request = _api.Create<Track>()
-				.ForTrackId(12345);
-			var track = await request.Please();
+			var track = await GetTestTrack();
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Release, Is.Not.Null);
@@ -61,9 +55,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		[Test]
 		public async Task Track_has_packages()
 		{
-			var request = _api.Create<Track>()
-				.ForTrackId(12345);
-			var track = await request.Please();
+			var track = await GetTestTrack();
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Download, Is.Not.Null);
@@ -78,5 +70,13 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
 			Assert.That(track.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
+
+		private async Task<Track> GetTestTrack()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345);
+			return await request.Please();
+		}
+
 	}
 }
