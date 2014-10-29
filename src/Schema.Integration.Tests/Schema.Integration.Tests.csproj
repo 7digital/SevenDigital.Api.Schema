@@ -52,8 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiUri.cs" />
-    <Compile Include="AppSettingsCredentials.cs" />
+    <Compile Include="Infrastructure\ApiConnection.cs" />
+    <Compile Include="Infrastructure\ApiUri.cs" />
+    <Compile Include="Infrastructure\AppSettingsCredentials.cs" />
     <Compile Include="EndpointTests\ApiSetupCredentialPassingTests.cs" />
     <Compile Include="EndpointTests\Artists\ArtistBrowseTests.cs" />
     <Compile Include="EndpointTests\Artists\ArtistChartTests.cs" />
@@ -87,7 +88,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.inttest.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

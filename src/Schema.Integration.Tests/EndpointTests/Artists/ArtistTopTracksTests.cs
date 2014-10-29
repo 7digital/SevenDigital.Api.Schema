@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
-using SevenDigital.Api.Wrapper.Http;
-using SevenDigital.Api.Wrapper.Requests;
-using SevenDigital.Api.Wrapper.Responses.Parsing;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 {
@@ -12,19 +10,20 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	[Category("Integration")]
 	public class ArtistTopTracksTests
 	{
-		private FluentApi<ArtistTopTracks> _fluentApi;
+		private IApi _api;
 
-		[SetUp]
-		public void SetUp()
+		[TestFixtureSetUp]
+		public void Setup()
 		{
-			_fluentApi = new FluentApi<ArtistTopTracks>(new HttpClientMediator(), new RequestBuilder(new ApiUri(), new AppSettingsCredentials()), new ResponseParser(new ApiResponseDetector()));
+			_api = new ApiConnection();
 		}
+
 
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			
-			var artistTopTracks = await _fluentApi
+
+			var artistTopTracks = await _api.Create<ArtistTopTracks>()
 				.WithParameter("artistId", "1")
 				.WithParameter("country", "GB")
 				.Please();
@@ -36,8 +35,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_hit_endpoint_with_static_fluent_interface()
 		{
-			var artistTopTracks = await Api<ArtistTopTracks>
-				.Create
+			var artistTopTracks = await _api.Create<ArtistTopTracks>()
 				.WithArtistId(1)
 				.WithParameter("country", "GB")
 				.Please();
@@ -49,7 +47,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_handle_out_of_range_request()
 		{
-			var artistTopTracks = await _fluentApi
+			var artistTopTracks = await _api.Create<ArtistTopTracks>()
 				.WithParameter("artistId", "1")
 				.WithParameter("page", "100")
 				.WithParameter("pageSize", "10")

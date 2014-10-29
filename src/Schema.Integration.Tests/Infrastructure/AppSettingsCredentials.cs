@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using SevenDigital.Api.Wrapper;
 
-namespace SevenDigital.Api.Schema.Integration.Tests
+namespace SevenDigital.Api.Schema.Integration.Tests.Infrastructure
 {
 	public class AppSettingsCredentials : IOAuthCredentials
 	{

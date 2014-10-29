@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
-using SevenDigital.Api.Wrapper.Http;
-using SevenDigital.Api.Wrapper.Requests;
-using SevenDigital.Api.Wrapper.Responses.Parsing;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 {
@@ -12,18 +10,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	[Category("Integration")]
 	public class ArtistSearchTests
 	{
-		private FluentApi<ArtistSearch> _fluentApi;
+		private IApi _api;
 
-		[SetUp]
-		public void SetUp()
+		[TestFixtureSetUp]
+		public void Setup()
 		{
-			_fluentApi = new FluentApi<ArtistSearch>(new HttpClientMediator(), new RequestBuilder(new ApiUri(), new AppSettingsCredentials()), new ResponseParser(new ApiResponseDetector()));
+			_api = new ApiConnection();
 		}
 
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = _fluentApi
+			var request = _api.Create<ArtistSearch>()
 				.WithParameter("q", "pink")
 				.WithParameter("country", "GB");
 			var artist = await request.Please();
@@ -34,7 +32,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_get_multiple_results()
 		{
-			var request = _fluentApi
+			var request = _api.Create<ArtistSearch>()
 				.ForShop(34)
 				.WithQuery("pink")
 				.WithPageNumber(1)
@@ -42,6 +40,20 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			var artistSearch = await request.Please();
 
 			Assert.That(artistSearch.Results.Count, Is.GreaterThan(1));
+		}
+
+		[Test]
+		public async Task Can_hit_endpoint_with_paging()
+		{
+			var request = _api.Create<ArtistSearch>()
+				.WithParameter("q", "pink")
+				.WithParameter("page", "2")
+				.WithParameter("pageSize", "20");
+			var artistBrowse = await request.Please();
+
+			Assert.That(artistBrowse, Is.Not.Null);
+			Assert.That(artistBrowse.Page, Is.EqualTo(2));
+			Assert.That(artistBrowse.PageSize, Is.EqualTo(20));
 		}
 
 		[Test]
@@ -54,20 +66,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			var artistSearch = await request.Please();
 
 			Assert.That(artistSearch, Is.Not.Null);
-		}
-
-		[Test]
-		public async Task Can_hit_endpoint_with_paging()
-		{
-			var request = Api<ArtistSearch>.Create
-				.WithParameter("q", "pink")
-				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
-			var artistBrowse = await request.Please();
-
-			Assert.That(artistBrowse, Is.Not.Null);
-			Assert.That(artistBrowse.Page, Is.EqualTo(2));
-			Assert.That(artistBrowse.PageSize, Is.EqualTo(20));
 		}
 
 		[Test]

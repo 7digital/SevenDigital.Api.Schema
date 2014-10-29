@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
@@ -9,11 +10,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 	[TestFixture]
 	public class ArtistReleasesTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint_with_fluent_interface()
 		{
-			var request = Api<ArtistReleases>
-				.Create
+			var request = _api.Create<ArtistReleases>()
 				.WithArtistId(1);
 			var artistReleases = await request.Please();
 
@@ -25,8 +33,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_hit_endpoint_with_paging()
 		{
-			var request = Api<ArtistReleases>
-				.Create
+			var request = _api.Create<ArtistReleases>()
 				.WithPageNumber(2)
 				.WithPageSize(20)
 				.WithParameter("artistId", "1");

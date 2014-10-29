@@ -1,17 +1,25 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Artists;
+using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 {
 	public class ArtistSimilarTests
 	{
+		private IApi _api;
+
+		[TestFixtureSetUp]
+		public void Setup()
+		{
+			_api = new ApiConnection();
+		}
+		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
-			var request = Api<ArtistSimilar>
-				.Create
+			var request = _api.Create<ArtistSimilar>()
 				.WithArtistId(1)
 				.WithParameter("country", "GB");
 			var artistSimilar = await request.Please();
@@ -22,7 +30,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_get_multiple_results()
 		{
-			var request = Api<ArtistSimilar>.Create
+			var request = _api.Create<ArtistSimilar>()
 				.WithArtistId(1)
 				.WithParameter("page", "1")
 				.WithParameter("pageSize", "20");
@@ -34,8 +42,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		[Test]
 		public async Task Can_do_paging()
 		{
-			var request = Api<ArtistSimilar>
-				.Create
+			var request = _api.Create<ArtistSimilar>()
 				.WithArtistId(1)
 				.WithParameter("page", "2")
 				.WithParameter("pageSize", "2");
