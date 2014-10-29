@@ -6,6 +6,9 @@ Schema in C# for public 7digital Api endpoints. These definitions are used by an
 
 These definitions can be useful on their own if you want to roll your own http communication to the 7digital Api, but want objects to de-serialise output into.
 
+Where to get it.
+====
+This code is [packaged here on nuget](https://www.nuget.org/packages/SevenDigital.Api.Schema/), and is a dependency for [the Api Wrapper](https://www.nuget.org/packages/SevenDigital.Api.Wrapper/)
 
 Notes for coders
 =====
