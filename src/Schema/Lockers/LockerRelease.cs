@@ -16,5 +16,14 @@ namespace SevenDigital.Api.Schema.Lockers
 
 		[XmlElement("available")]
 		public bool Available { get; set; }
+
+		public override string ToString()
+		{
+			if (Release == null)
+			{
+				return "No release";
+			}
+			return Release.ToString();
+		}
 	}
 }

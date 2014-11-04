@@ -11,5 +11,10 @@ namespace SevenDigital.Api.Schema.Lockers
 
 		[XmlElement("format")]
 		public Format Format { get; set; }
+
+		public override string ToString()
+		{
+			return string.Format("Download format: {0} at url : {1}", Format, Url);
+		}
 	}
 }

@@ -9,5 +9,10 @@ namespace SevenDigital.Api.Schema.Tracks
 	{
 		[XmlText]
 		public string Url { get; set; }
+
+		public override string ToString()
+		{
+			return Url;
+		}
 	}
 }

@@ -23,5 +23,14 @@ namespace SevenDigital.Api.Schema.Lockers
 		[XmlArray("downloadUrls")]
 		[XmlArrayItem("downloadUrl")]
 		public List<DownloadUrl> DownloadUrls { get; set; }
+
+		public override string ToString()
+		{
+			if (Track == null)
+			{
+				return "No track";
+			}
+			return Track.ToString();
+		}
 	}
 }
