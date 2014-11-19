@@ -48,11 +48,11 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			Assert.That(basketAdded, Is.Not.Null);
 			Assert.That(basketAdded.Id, Is.EqualTo(basketId));
-			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
-			Assert.That(basketAdded.BasketItems.Items.First().ReleaseId, Is.EqualTo(EXPECTED_RELEASE_ID.ToString()));
-			Assert.That(basketAdded.BasketItems.Items.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
+			Assert.That(basketAdded.BasketItems.Count, Is.GreaterThan(0));
+			Assert.That(basketAdded.BasketItems.First().ReleaseId, Is.EqualTo(EXPECTED_RELEASE_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
-			int toRemove = basketAdded.BasketItems.Items.First().Id;
+			int toRemove = basketAdded.BasketItems.First().Id;
 
 			var removeRequest = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)
@@ -61,7 +61,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			Assert.That(basketRemoved, Is.Not.Null);
 			Assert.That(basketRemoved.Id, Is.EqualTo(basketId));
-			Assert.That(basketRemoved.BasketItems.Items.Count(x => x.Id == toRemove), Is.EqualTo(0));
+			Assert.That(basketRemoved.BasketItems.Count(x => x.Id == toRemove), Is.EqualTo(0));
 		}
 
 		[Test]
@@ -77,12 +77,12 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 			var basketAdded = await addRequest.Please();
 
 			Assert.That(basketAdded, Is.Not.Null); Assert.That(basketAdded.Id, Is.EqualTo(basketId));
-			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
-			Assert.That(basketAdded.BasketItems.Items.First().TrackId, Is.EqualTo(EXPECTED_TRACK_ID.ToString()));
-			Assert.That(basketAdded.BasketItems.Items.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
+			Assert.That(basketAdded.BasketItems.Count, Is.GreaterThan(0));
+			Assert.That(basketAdded.BasketItems.First().TrackId, Is.EqualTo(EXPECTED_TRACK_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
 
-			int toRemove = basketAdded.BasketItems.Items.First().Id;
+			int toRemove = basketAdded.BasketItems.First().Id;
 
 			var request = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)
@@ -91,7 +91,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			Assert.That(basketRemoved, Is.Not.Null);
 			Assert.That(basketRemoved.Id, Is.EqualTo(basketId));
-			Assert.That(basketRemoved.BasketItems.Items.Count(x => x.Id == toRemove), Is.EqualTo(0));
+			Assert.That(basketRemoved.BasketItems.Count(x => x.Id == toRemove), Is.EqualTo(0));
 		}
 
 		[Test]
@@ -104,8 +104,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 				.ForReleaseId(EXPECTED_RELEASE_ID);
 			var basket = await request.Please();
 
-			Assert.That(basket.BasketItems.Items.First().AmountDue.Amount, Is.EqualTo("7.99"));
-			Assert.That(basket.BasketItems.Items.First().AmountDue.FormattedAmount, Is.EqualTo("£7.99"));
+			Assert.That(basket.BasketItems.First().AmountDue.Amount, Is.EqualTo("7.99"));
+			Assert.That(basket.BasketItems.First().AmountDue.FormattedAmount, Is.EqualTo("£7.99"));
 			Assert.That(basket.AmountDue.Amount, Is.EqualTo("7.99"));
 			Assert.That(basket.AmountDue.FormattedAmount, Is.EqualTo("£7.99"));
 		}

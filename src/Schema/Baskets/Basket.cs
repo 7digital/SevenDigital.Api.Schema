@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
@@ -16,8 +17,9 @@ namespace SevenDigital.Api.Schema.Baskets
 		[XmlElement("price")]
 		public Price Price { get; set; }
 
-		[XmlElement("basketItems")]
-		public BasketItemList BasketItems { get; set; }
+		[XmlArray("basketItems")]
+		[XmlArrayItem("basketItem")]
+		public List<BasketItem> BasketItems { get; set; }
 
 		[XmlElement("amountDue")]
 		public AmountDue AmountDue { get; set; }
