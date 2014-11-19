@@ -33,6 +33,6 @@ namespace SevenDigital.Api.Schema.Baskets
 		public Discount Discount { get; set; }
 	
 		[XmlElement("package")]
-		public BasketPackage BasketPackage { get; set; }
+		public BasketPackage Package { get; set; }
 	}
 }

@@ -50,7 +50,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 			Assert.That(basketAdded.Id, Is.EqualTo(basketId));
 			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
 			Assert.That(basketAdded.BasketItems.Items.First().ReleaseId, Is.EqualTo(EXPECTED_RELEASE_ID.ToString()));
-			Assert.That(basketAdded.BasketItems.Items.First().BasketPackage.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
+			Assert.That(basketAdded.BasketItems.Items.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
 			int toRemove = basketAdded.BasketItems.Items.First().Id;
 
@@ -79,7 +79,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 			Assert.That(basketAdded, Is.Not.Null); Assert.That(basketAdded.Id, Is.EqualTo(basketId));
 			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
 			Assert.That(basketAdded.BasketItems.Items.First().TrackId, Is.EqualTo(EXPECTED_TRACK_ID.ToString()));
-			Assert.That(basketAdded.BasketItems.Items.First().BasketPackage.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
+			Assert.That(basketAdded.BasketItems.Items.First().Package.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
 
 			int toRemove = basketAdded.BasketItems.Items.First().Id;
