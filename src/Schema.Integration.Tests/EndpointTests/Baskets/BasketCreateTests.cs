@@ -12,6 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 	{
 		private const int EXPECTED_RELEASE_ID = 160553;
 		private const int EXPECTED_TRACK_ID = 1693930;
+		private const int STANDARD_PACKAGE_ID = 2;
 
 		private IApi _api;
 
@@ -41,15 +42,17 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 
 			var request = _api.Create<AddItemToBasket>()
 				.UseBasketId(basketId)
-				.ForReleaseId(EXPECTED_RELEASE_ID);
+				.ForReleaseId(EXPECTED_RELEASE_ID)
+				.WithParameter("packageId", STANDARD_PACKAGE_ID);
 			var basketAdded = await request.Please();
 
 			Assert.That(basketAdded, Is.Not.Null);
 			Assert.That(basketAdded.Id, Is.EqualTo(basketId));
 			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
-			Assert.That(basketAdded.BasketItems.Items.FirstOrDefault().ReleaseId, Is.EqualTo(EXPECTED_RELEASE_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.Items.First().ReleaseId, Is.EqualTo(EXPECTED_RELEASE_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.Items.First().BasketPackage.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
-			int toRemove = basketAdded.BasketItems.Items.FirstOrDefault().Id;
+			int toRemove = basketAdded.BasketItems.Items.First().Id;
 
 			var removeRequest = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)
@@ -69,14 +72,17 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 			var addRequest = _api.Create<AddItemToBasket>()
 				.UseBasketId(basketId)
 				.ForReleaseId(EXPECTED_RELEASE_ID)
-				.ForTrackId(EXPECTED_TRACK_ID);
+				.ForTrackId(EXPECTED_TRACK_ID)
+				.WithParameter("packageId", STANDARD_PACKAGE_ID);
 			var basketAdded = await addRequest.Please();
 
 			Assert.That(basketAdded, Is.Not.Null); Assert.That(basketAdded.Id, Is.EqualTo(basketId));
 			Assert.That(basketAdded.BasketItems.Items.Count, Is.GreaterThan(0));
-			Assert.That(basketAdded.BasketItems.Items.FirstOrDefault().TrackId, Is.EqualTo(EXPECTED_TRACK_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.Items.First().TrackId, Is.EqualTo(EXPECTED_TRACK_ID.ToString()));
+			Assert.That(basketAdded.BasketItems.Items.First().BasketPackage.Id, Is.EqualTo(STANDARD_PACKAGE_ID));
 
-			int toRemove = basketAdded.BasketItems.Items.FirstOrDefault().Id;
+
+			int toRemove = basketAdded.BasketItems.Items.First().Id;
 
 			var request = _api.Create<RemoveItemFromBasket>()
 				.UseBasketId(basketId)

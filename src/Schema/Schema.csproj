@@ -50,6 +50,7 @@
     <Compile Include="Baskets\Basket.cs" />
     <Compile Include="Baskets\BasketItem.cs" />
     <Compile Include="Baskets\BasketItemList.cs" />
+    <Compile Include="Baskets\BasketPackage.cs" />
     <Compile Include="Baskets\Discount.cs" />
     <Compile Include="Baskets\DiscountType.cs" />
     <Compile Include="Baskets\PayPalExpressCheckout.cs" />
