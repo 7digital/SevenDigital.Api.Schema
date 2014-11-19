@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace SevenDigital.Api.Schema.Package
+namespace SevenDigital.Api.Schema.Packages
 {
 	public class PackagePrice
 	{

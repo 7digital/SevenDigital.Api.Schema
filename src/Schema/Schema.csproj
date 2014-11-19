@@ -83,10 +83,10 @@
     <Compile Include="OAuth\OAuthAccessToken.cs" />
     <Compile Include="OAuth\OAuthRequestToken.cs" />
     <Compile Include="OAuth\OAuthSignedAttribute.cs" />
-    <Compile Include="Package\Package.cs" />
-    <Compile Include="Package\PackageFormat.cs" />
-    <Compile Include="Package\PackageList.cs" />
-    <Compile Include="Package\PackagePrice.cs" />
+    <Compile Include="Packages\Package.cs" />
+    <Compile Include="Packages\PackageFormat.cs" />
+    <Compile Include="Packages\PackageList.cs" />
+    <Compile Include="Packages\PackagePrice.cs" />
     <Compile Include="ParameterDefinitions\Get\HasAffiliatePartnerParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasArtistIdParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasBasketItemParameter.cs" />

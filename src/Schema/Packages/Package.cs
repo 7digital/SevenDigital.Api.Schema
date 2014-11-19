@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace SevenDigital.Api.Schema.Package
+namespace SevenDigital.Api.Schema.Packages
 {
 	[XmlRoot("package")]
 	public class Package
