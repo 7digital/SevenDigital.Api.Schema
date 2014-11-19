@@ -3,7 +3,6 @@ using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Baskets
 {
-	[XmlRoot("basketItems")]
 	public class BasketItemList
 	{
 		[XmlElement("basketItem")]

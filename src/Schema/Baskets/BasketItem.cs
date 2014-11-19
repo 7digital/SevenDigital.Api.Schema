@@ -3,7 +3,6 @@ using SevenDigital.Api.Schema.Pricing;
 
 namespace SevenDigital.Api.Schema.Baskets
 {
-	[XmlRoot("basketItem")]
 	public class BasketItem
 	{
 		[XmlAttribute("id")]
