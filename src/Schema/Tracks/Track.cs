@@ -42,6 +42,9 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("isrc")]
 		public string Isrc { get; set; }
 
+		[XmlElement("type")]
+		public TrackType Type { get; set; }
+
 		[XmlElement("release")]
 		public Release Release { get; set; }
 
@@ -53,9 +56,6 @@ namespace SevenDigital.Api.Schema.Tracks
 
 		[XmlElement("price")]
 		public Price Price { get; set; }
-
-		[XmlElement("type")]
-		public TrackType Type { get; set; }
 
 		[XmlElement(ElementName = "streamingReleaseDate", IsNullable = true)]
 		public DateTime? StreamingReleaseDate { get; set; }
