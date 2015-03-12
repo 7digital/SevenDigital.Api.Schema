@@ -53,6 +53,34 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
+		public async Task Track_has_release_artist()
+		{
+			var track = await GetTestTrack();
+
+			Assert.That(track, Is.Not.Null);
+
+			Assert.That(track.Release.Artist, Is.Not.Null);
+			Assert.That(track.Release.Artist.Name, Is.EqualTo("The Dandy Warhols"));
+			Assert.That(track.Release.Artist.AppearsAs, Is.EqualTo("The Dandy Warhols"));
+		}
+
+		[Test]
+		public async Task Track_has_release_label_and_licensor()
+		{
+			var track = await GetTestTrack();
+
+			Assert.That(track, Is.Not.Null);
+
+			Assert.That(track.Release.Label, Is.Not.Null);
+			Assert.That(track.Release.Label.Id, Is.GreaterThan(0));
+			Assert.That(track.Release.Label.Name, Is.Not.Empty);
+
+			Assert.That(track.Release.Licensor, Is.Not.Null);
+			Assert.That(track.Release.Licensor.Id, Is.GreaterThan(0));
+			Assert.That(track.Release.Licensor.Name, Is.Not.Empty);
+		}
+
+		[Test]
 		public async Task Track_has_packages()
 		{
 			var track = await GetTestTrack();
