@@ -68,8 +68,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(release.Download.Packages[0].Id, Is.EqualTo(2));
 			Assert.That(release.Download.Packages[0].Description, Is.EqualTo("standard"));
 			Assert.That(release.Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(release.Download.Packages[0].Price.SevendigitalPrice, Is.EqualTo(8.99));
-			Assert.That(release.Download.Packages[0].Price.RecommendedRetailPrice, Is.EqualTo(8.99));
+			Assert.That(release.Download.Packages[0].Price.SevendigitalPrice, Is.GreaterThan(0));
+			Assert.That(release.Download.Packages[0].Price.RecommendedRetailPrice, Is.GreaterThan(0));
 			Assert.That(release.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
 			Assert.That(release.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
