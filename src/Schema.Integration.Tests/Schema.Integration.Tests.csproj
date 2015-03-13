@@ -39,8 +39,7 @@
     <Reference Include="OAuth">
       <HintPath>..\..\packages\OAuth.1.0.3\lib\net40\OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="SevenDigital.Api.Wrapper, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="SevenDigital.Api.Wrapper">
       <HintPath>..\..\packages\SevenDigital.Api.Wrapper.5.1.0\lib\net45\SevenDigital.Api.Wrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
