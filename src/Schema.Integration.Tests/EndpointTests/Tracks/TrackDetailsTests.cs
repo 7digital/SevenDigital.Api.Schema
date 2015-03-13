@@ -64,7 +64,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.Release.Artist.AppearsAs, Is.EqualTo("The Dandy Warhols"));
 		}
 
-		[Test]
+		[Test, Ignore("This feature is not yet live")]
 		public async Task Track_has_release_label_and_licensor()
 		{
 			var track = await GetTestTrack();
