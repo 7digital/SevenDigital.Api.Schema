@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndpointTests\Matching\ArtistMatchTests.cs" />
+    <Compile Include="EndpointTests\Matching\ReleaseMatchTests.cs" />
+    <Compile Include="EndpointTests\Matching\TrackMatchTests.cs" />
     <Compile Include="Infrastructure\ApiConnection.cs" />
     <Compile Include="Infrastructure\ApiUri.cs" />
     <Compile Include="Infrastructure\AppSettingsCredentials.cs" />
