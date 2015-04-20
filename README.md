@@ -4,7 +4,7 @@ What is this code?
 ========
 Schema in C# for public 7digital Api endpoints. These definitions are used by and installed with [The Api Wrapper](https://github.com/7digital/SevenDigital.Api.Wrapper). If you're new, start there.
 
-These definitions can be useful on their own if you want to roll your own http communication to the 7digital Api, but want objects to de-serialise output into.
+These definitions can be useful on their own if you want to roll your own http communication to the 7digital Api, but want objects to de-serialise output into. It may also useful as a reference for other languages, when creating objects to deserialise 7digital Api responses into.
 
 Where to get it.
 ====
