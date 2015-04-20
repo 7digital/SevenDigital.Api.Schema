@@ -82,7 +82,6 @@
     <Compile Include="EndpointTests\Tags\TagsTests.cs" />
     <Compile Include="EndpointTests\Tracks\TrackChartTests.cs" />
     <Compile Include="EndpointTests\Tracks\TrackDetailsTests.cs" />
-    <Compile Include="EndpointTests\Tracks\TrackPreviewTests.cs" />
     <Compile Include="EndpointTests\Tracks\TrackSearchTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDataFromEnvironmentOrAppSettings.cs" />

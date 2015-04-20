@@ -162,7 +162,6 @@
     <Compile Include="Territories\Language.cs" />
     <Compile Include="Tracks\Track.cs" />
     <Compile Include="Tracks\TrackChart.cs" />
-    <Compile Include="Tracks\TrackPreview.cs" />
     <Compile Include="Tracks\TrackSearch.cs" />
     <Compile Include="Tracks\TrackSearchResult.cs" />
     <Compile Include="Tracks\TrackType.cs" />
