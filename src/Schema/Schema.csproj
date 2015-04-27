@@ -62,6 +62,7 @@
     <Compile Include="Charts\TrackChartItem.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="ErrorCode.cs" />
+    <Compile Include="ErrorWithItemId.cs" />
     <Compile Include="HasPaging.cs" />
     <Compile Include="ItemType.cs" />
     <Compile Include="ITypeGenerator.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Releases\ReleaseChart.cs" />
     <Compile Include="Releases\ReleaseEditorial.cs" />
     <Compile Include="Releases\ReleaseRecommend.cs" />
+    <Compile Include="Releases\ReleasesBatch.cs" />
     <Compile Include="Releases\ReleaseSearch.cs" />
     <Compile Include="Releases\ReleaseSearchResult.cs" />
     <Compile Include="Releases\ReleaseTracks.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Territories\Language.cs" />
     <Compile Include="Tracks\Track.cs" />
     <Compile Include="Tracks\TrackChart.cs" />
+    <Compile Include="Tracks\TracksBatch.cs" />
     <Compile Include="Tracks\TrackSearch.cs" />
     <Compile Include="Tracks\TrackSearchResult.cs" />
     <Compile Include="Tracks\TrackType.cs" />
