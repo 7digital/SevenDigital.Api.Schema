@@ -44,7 +44,7 @@ namespace SevenDigital.Api.Schema.Releases
 		public string Image { get; set; }
 
 		[XmlElement("releaseDate")]
-		public DateTime ReleaseDate { get; set; }
+		public DateTime? ReleaseDate { get; set; }
 
 		[XmlElement("addedDate")]
 		public DateTime AddedDate { get; set; }
