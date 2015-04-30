@@ -52,9 +52,11 @@ namespace SevenDigital.Api.Schema.Releases
 		[XmlIgnore]
 		public bool AddedDateSpecified { get { return AddedDate > DateTime.MinValue; } }
 
+		[Obsolete("Prices are given for each package under the 'Download' element")]
 		[XmlElement("price")]
 		public Price Price { get; set; }
 
+		[Obsolete("Formats are given for each package under the 'Download' element")]
 		[XmlElement("formats")]
 		public FormatList Formats { get; set; }
 
