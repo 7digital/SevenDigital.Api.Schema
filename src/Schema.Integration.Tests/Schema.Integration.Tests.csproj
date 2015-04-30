@@ -40,7 +40,7 @@
       <HintPath>..\..\packages\OAuth.1.0.3\lib\net40\OAuth.dll</HintPath>
     </Reference>
     <Reference Include="SevenDigital.Api.Wrapper">
-      <HintPath>..\..\packages\SevenDigital.Api.Wrapper.5.1.0\lib\net45\SevenDigital.Api.Wrapper.dll</HintPath>
+      <HintPath>..\..\packages\SevenDigital.Api.Wrapper.6.0.0\lib\net45\SevenDigital.Api.Wrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
