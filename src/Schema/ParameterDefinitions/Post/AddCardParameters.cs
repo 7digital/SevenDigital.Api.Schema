@@ -2,6 +2,7 @@ using System;
 
 namespace SevenDigital.Api.Schema.ParameterDefinitions.Post
 {
+	[Serializable]
 	public class AddCardParameters
 	{
 		public string Number { get; set; }

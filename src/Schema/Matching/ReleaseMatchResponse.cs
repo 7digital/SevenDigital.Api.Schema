@@ -32,6 +32,7 @@ namespace SevenDigital.Api.Schema.Matching
 		public MatchError MatchError { get; set; }
 	}
 
+	[Serializable]
 	public class ReleaseMatch
 	{
 		[XmlElement("sevenDigitalId")]
