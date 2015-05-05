@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 namespace SevenDigital.Api.Schema
 {
 	[Serializable]
+	[XmlRoot("error")]
 	public class Error
 	{
 		[XmlAttribute("code")]
