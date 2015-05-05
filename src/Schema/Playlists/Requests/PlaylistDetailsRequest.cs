@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 namespace SevenDigital.Api.Schema.Playlists.Requests
 {
 	[Serializable]
+	[XmlRoot("playlist")]
 	public class PlaylistDetailsRequest
 	{
 		[XmlElement("name")]
