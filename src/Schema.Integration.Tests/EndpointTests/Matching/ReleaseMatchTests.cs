@@ -6,7 +6,6 @@ using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Schema.Matching;
 using SevenDigital.Api.Wrapper;
-using SevenDigital.Api.Wrapper.Requests;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Matching
 {
