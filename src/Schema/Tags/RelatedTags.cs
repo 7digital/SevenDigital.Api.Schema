@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 
 namespace SevenDigital.Api.Schema.Tags
 {
+	[Serializable]
 	[ApiEndpoint("tag/related")]
 	[XmlRoot("tags")]
 	public class RelatedTags : HasPaging

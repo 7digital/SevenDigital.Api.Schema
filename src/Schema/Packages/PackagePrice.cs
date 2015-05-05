@@ -1,7 +1,9 @@
+using System;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Packages
 {
+	[Serializable]
 	public class PackagePrice
 	{
 		[XmlElement("currencyCode")]

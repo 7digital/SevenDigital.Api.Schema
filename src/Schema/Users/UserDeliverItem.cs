@@ -8,6 +8,7 @@ using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Users
 {
+	[Serializable]
 	[OAuthSigned]
 	[ApiEndpoint("user/deliveritem")]
 	[XmlRoot("purchase")]

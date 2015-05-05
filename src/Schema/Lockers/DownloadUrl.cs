@@ -1,9 +1,10 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Media;
 
 namespace SevenDigital.Api.Schema.Lockers
 {
-	[XmlRoot("downloadUrl")]
+	[Serializable]
 	public class DownloadUrl
 	{
 		[XmlElement("url")]

@@ -1,9 +1,10 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Artists;
 
 namespace SevenDigital.Api.Schema.Charts
 {
-	[XmlRoot("chartItem")]
+	[Serializable]
 	public class ArtistChartItem
 	{
 		[XmlElement("position")]

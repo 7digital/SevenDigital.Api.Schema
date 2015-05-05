@@ -1,9 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Releases
 {
+	[Serializable]
 	[XmlRoot("editorial")]
 	[ApiEndpoint("release/editorial")]
 	public class ReleaseEditorial : HasReleaseIdParameter
@@ -15,6 +17,7 @@ namespace SevenDigital.Api.Schema.Releases
 		public TextItem PromotionalText { get; set; }
 	}
 
+	[Serializable]
 	public class TextItem
 	{
 		[XmlElement("text")]

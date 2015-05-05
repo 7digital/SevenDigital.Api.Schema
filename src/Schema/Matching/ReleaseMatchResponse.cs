@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
 
 namespace SevenDigital.Api.Schema.Matching
 {
+	[Serializable]
 	[ApiEndpoint("release/match/byid")]
 	[XmlRoot("matches")]
 	[OAuthSigned]
@@ -14,6 +16,7 @@ namespace SevenDigital.Api.Schema.Matching
 		public List<ReleasesMatch> Releases { get; set; }
 	}
 
+	[Serializable]
 	public class ReleasesMatch
 	{
 		[XmlAttribute("mbId")]

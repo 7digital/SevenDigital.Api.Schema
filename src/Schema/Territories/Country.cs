@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Territories
 {
-	[XmlRoot("country")]
+	[Serializable]
 	public class Country
 	{
 		[XmlAttribute("code")]

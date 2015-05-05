@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema
 {
-	[XmlRoot("label")]
+	[Serializable]
 	public class Label
 	{
 		[XmlAttribute("id")]

@@ -1,9 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Territories
 {
+	[Serializable]
 	[ApiEndpoint("country/resolve")]
 	[XmlRoot("GeoIpLookup")]
 	public class GeoIpLookup : HasIpAddressParameter

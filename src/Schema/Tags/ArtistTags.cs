@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 
 namespace SevenDigital.Api.Schema.Tags
 {
+	[Serializable]
 	[ApiEndpoint("artist/tags")]
 	[XmlRoot("tags")]
 	public class ArtistTags : HasPaging

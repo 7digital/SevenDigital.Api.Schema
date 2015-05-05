@@ -10,6 +10,7 @@ using SevenDigital.Api.Schema.Releases;
 
 namespace SevenDigital.Api.Schema.Tracks
 {
+	[Serializable]
 	[XmlRoot("track")]
 	[ApiEndpoint("track/details")]
 	public class Track : HasTrackIdParameter

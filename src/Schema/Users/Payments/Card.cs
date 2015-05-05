@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Users.Payments
 {
-	[XmlRoot("card")]
+	[Serializable]
 	public class Card
 	{
 		[XmlAttribute("id")]

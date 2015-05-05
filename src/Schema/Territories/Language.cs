@@ -1,7 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Territories
 {
+	[Serializable]
 	public class Language
 	{
 		[XmlElement("name")]

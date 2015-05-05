@@ -1,7 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Pricing
 {
+	[Serializable]
 	public class Currency
 	{
 		[XmlAttribute("code")]

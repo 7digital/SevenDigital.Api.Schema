@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Releases
 {
-	[XmlRoot("searchResult")]
+	[Serializable]
 	public class ReleaseSearchResult
 	{
 		[XmlElement("type")]

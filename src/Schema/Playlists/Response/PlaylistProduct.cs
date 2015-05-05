@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists.Response
 {
-	[XmlRoot("track")]
+	[Serializable]
 	public class PlaylistProduct : Product
 	{
 		[XmlAttribute("id")]

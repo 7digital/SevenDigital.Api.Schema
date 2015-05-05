@@ -5,7 +5,7 @@ using SevenDigital.Api.Schema.Tracks;
 
 namespace SevenDigital.Api.Schema.Lockers
 {
-	[XmlRoot("lockerTrack")]
+	[Serializable]
 	public class LockerTrack
 	{
 		[XmlElement("track")]

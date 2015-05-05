@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Packages
 {
-	[XmlRoot("packages")]
+	[Serializable]
 	public class PackageList
 	{
 		[XmlArray("packages")]

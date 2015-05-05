@@ -1,8 +1,10 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 
 namespace SevenDigital.Api.Schema.OAuth
 {
+	[Serializable]
 	[ApiEndpoint("oauth/accesstoken")]
 	[XmlRoot("oauth_access_token")]
 	[OAuthSigned]

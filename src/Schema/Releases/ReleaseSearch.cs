@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Releases
 {
+	[Serializable]
 	[ApiEndpoint("release/search")]
 	[XmlRoot("searchResults")]
 	public class ReleaseSearch : HasPaging, HasSearchParameter

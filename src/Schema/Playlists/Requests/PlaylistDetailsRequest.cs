@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists.Requests
 {
-	[XmlRoot("playlist")]
+	[Serializable]
 	public class PlaylistDetailsRequest
 	{
 		[XmlElement("name")]

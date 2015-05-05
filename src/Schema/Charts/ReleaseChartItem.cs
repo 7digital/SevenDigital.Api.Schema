@@ -1,9 +1,10 @@
+using System;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Releases;
 
 namespace SevenDigital.Api.Schema.Charts
 {
-	[XmlRoot("chartItem")]
+	[Serializable]
 	public class ReleaseChartItem
 	{
 		[XmlElement("position")]

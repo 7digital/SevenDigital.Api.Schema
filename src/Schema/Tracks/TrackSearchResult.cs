@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Tracks
 {
-	[XmlRoot("searchResult")]
+	[Serializable]
 	public class TrackSearchResult
 	{
 		[XmlElement("type")]

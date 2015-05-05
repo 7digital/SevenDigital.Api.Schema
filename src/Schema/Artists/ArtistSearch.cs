@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Artists
 {
+	[Serializable]
 	[ApiEndpoint("artist/search")]
 	[XmlRoot("searchResults")]
 	public class ArtistSearch : HasPaging, HasSearchParameter

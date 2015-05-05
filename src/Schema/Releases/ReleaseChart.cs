@@ -6,6 +6,7 @@ using SevenDigital.Api.Schema.Charts;
 
 namespace SevenDigital.Api.Schema.Releases
 {
+	[Serializable]
 	[ApiEndpoint("release/chart")]
 	[XmlRoot("chart")]
 	public class ReleaseChart : HasPaging, IChart<ReleaseChartItem>

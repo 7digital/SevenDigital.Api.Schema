@@ -1,9 +1,10 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Releases;
 
 namespace SevenDigital.Api.Schema.Merchandising
 {
-	[XmlRoot("listItem")]
+	[Serializable]
 	public class ListItem
 	{
 		[XmlElement("type")]

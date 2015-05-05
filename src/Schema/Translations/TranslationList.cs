@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 
 namespace SevenDigital.Api.Schema.Translations
 {
+	[Serializable]
 	[ApiEndpoint("translations")]
 	[XmlRoot("translations")]
 	public class TranslationList : HasPaging
@@ -12,6 +14,7 @@ namespace SevenDigital.Api.Schema.Translations
 		public List<Translation> TranslationItems { get; set; }
 	}
 
+	[Serializable]
 	public class Translation
 	{
 		[XmlElement("key")]

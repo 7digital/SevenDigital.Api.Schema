@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Media
 {
-	[XmlRoot("formatList")]
+	[Serializable]
 	public class FormatList
 	{
 		[XmlAttribute("availableDrmFree")]

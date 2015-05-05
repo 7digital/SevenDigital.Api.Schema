@@ -1,9 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Artists
 {
+	[Serializable]
 	[ApiEndpoint("artist/details")]
 	[XmlRoot("artist")]
 	public class Artist : HasArtistIdParameter

@@ -1,9 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
 
 namespace SevenDigital.Api.Schema.Users.Payments
 {
+	[Serializable]
 	[ApiEndpoint("user/payment/cardregistration/{id}")]
 	[OAuthSigned]
 	[XmlRoot("cardRegistration")]

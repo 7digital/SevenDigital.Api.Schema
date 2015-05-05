@@ -9,6 +9,7 @@ using SevenDigital.Api.Schema.Pricing;
 
 namespace SevenDigital.Api.Schema.Releases
 {
+	[Serializable]
 	[XmlRoot("release")]
 	[ApiEndpoint("release/details")]
 	public class Release : HasReleaseIdParameter

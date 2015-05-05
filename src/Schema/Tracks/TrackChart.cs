@@ -6,6 +6,7 @@ using SevenDigital.Api.Schema.Charts;
 
 namespace SevenDigital.Api.Schema.Tracks
 {
+	[Serializable]
 	[ApiEndpoint("track/chart")]
 	[XmlRoot("chart")]
 	public class TrackChart : HasPaging, IChart<TrackChartItem>

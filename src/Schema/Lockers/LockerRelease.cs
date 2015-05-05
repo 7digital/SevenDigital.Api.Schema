@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Releases;
 
 namespace SevenDigital.Api.Schema.Lockers
 {
-	[XmlRoot("lockerRelease")]
+	[Serializable]
 	public class LockerRelease
 	{
 		[XmlElement("release")]

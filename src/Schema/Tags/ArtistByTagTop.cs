@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Tags
 {
+	[Serializable]
 	[ApiEndpoint("artist/bytag/top")]
 	[XmlRoot("taggedResults")]
 	public class ArtistByTagTop : HasPaging, HasTags

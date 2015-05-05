@@ -1,8 +1,9 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists
 {
-	[XmlRoot("track")]
+	[Serializable]
 	public class Product
 	{
 		[XmlElement("trackId")]

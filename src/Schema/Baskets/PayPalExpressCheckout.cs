@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
@@ -5,6 +6,7 @@ using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Baskets
 {
+	[Serializable]
 	[ApiEndpoint("basket/paypalurl")]
 	[XmlRoot("expressCheckout")]
 	public class PayPalExpressCheckout : HasBasketParameter
@@ -13,6 +15,7 @@ namespace SevenDigital.Api.Schema.Baskets
 		public string Url { get; set; }
 	}
 
+	[Serializable]
 	[OAuthSigned]
 	[HttpPost]
 	[ApiEndpoint("basket/completepaypalpurchase")]

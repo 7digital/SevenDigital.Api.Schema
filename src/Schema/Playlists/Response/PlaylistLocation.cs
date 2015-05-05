@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists.Response
 {
-	[XmlRoot("playlist")]
+	[Serializable]
 	public class PlaylistLocation : UserBasedUpdatableItem
 	{
 		[XmlAttribute("id")]
