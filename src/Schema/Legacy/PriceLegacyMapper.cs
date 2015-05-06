@@ -9,14 +9,14 @@ namespace SevenDigital.Api.Schema.Legacy
 {
 	public static class PriceLegacyMapper
 	{
-		private static readonly Dictionary<string, string> regionMap;
+		private static readonly Dictionary<string, string> currencySymbolMap;
 
 		static PriceLegacyMapper()
 		{
-			regionMap = BuildRegionMap();
+			currencySymbolMap = BuildCurrencySymbolMap();
 		}
 
-		private static Dictionary<string, string> BuildRegionMap()
+		private static Dictionary<string, string> BuildCurrencySymbolMap()
 		{
 			return CultureInfo
 				.GetCultures(CultureTypes.AllCultures)
@@ -49,7 +49,7 @@ namespace SevenDigital.Api.Schema.Legacy
 
 			var isOnSale = (packagePrice.RecommendedRetailPrice != packagePrice.SevendigitalPrice);
 
-			var currencySymbol = regionMap[packagePrice.CurrencyCode];
+			var currencySymbol = currencySymbolMap[packagePrice.CurrencyCode];
 
 			var formattedRrp = FormatPriceWithSymbol(packagePrice.RecommendedRetailPrice, currencySymbol);
 			var formattedPriceValue = FormatPriceWithSymbol(packagePrice.SevendigitalPrice, currencySymbol);
