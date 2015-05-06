@@ -11,13 +11,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[TestFixture]
 	public class ReleaseTracksTests
 	{
-		private IApi _api;
-
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
+		private readonly IApi _api = new ApiConnection();
 		
 		[Test]
 		public async Task Can_hit_endpoint()
@@ -28,16 +22,19 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(releaseTracks, Is.Not.Null);
 			Assert.That(releaseTracks.Tracks.Count, Is.EqualTo(16));
-			Assert.That(releaseTracks.Tracks.First().Title, Is.EqualTo("Never Gonna Give You Up"));
-			Assert.That(releaseTracks.Tracks.First().Price.Status, Is.EqualTo(PriceStatus.Available));
 
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Id, Is.EqualTo(2));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Description, Is.EqualTo("standard"));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Price.SevendigitalPrice, Is.EqualTo(0.99));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Price.RecommendedRetailPrice, Is.EqualTo(0.99));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
-			Assert.That(releaseTracks.Tracks.First().Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
+			var track = releaseTracks.Tracks.First();
+			Assert.That(track.Title, Is.EqualTo("Never Gonna Give You Up"));
+			Assert.That(track.Price, Is.Not.Null);
+			Assert.That(track.Price.Status, Is.EqualTo(PriceStatus.Available));
+
+			Assert.That(track.Download.Packages[0].Id, Is.EqualTo(2));
+			Assert.That(track.Download.Packages[0].Description, Is.EqualTo("standard"));
+			Assert.That(track.Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
+			Assert.That(track.Download.Packages[0].Price.SevendigitalPrice, Is.EqualTo(0.99));
+			Assert.That(track.Download.Packages[0].Price.RecommendedRetailPrice, Is.EqualTo(0.99));
+			Assert.That(track.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
+			Assert.That(track.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
 		[Test]
@@ -49,7 +46,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(releaseTracks, Is.Not.Null);
 			Assert.That(releaseTracks.Tracks.Count, Is.EqualTo(1));
-			Assert.That(releaseTracks.Tracks.First().Price.Status, Is.EqualTo(PriceStatus.Free));
+
+			var track = releaseTracks.Tracks.First();
+			Assert.That(track.Price, Is.Not.Null);
+			Assert.That(track.Price.Status, Is.EqualTo(PriceStatus.Free));
 		}
 
 		[Test]
@@ -61,7 +61,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(releaseTracks, Is.Not.Null);
 			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
-			Assert.That(releaseTracks.Tracks.First().Price.Status, Is.EqualTo(PriceStatus.UnAvailable));
+
+			var track = releaseTracks.Tracks.First();
+			Assert.That(track.Price, Is.Not.Null);
+			Assert.That(track.Price.Status, Is.EqualTo(PriceStatus.UnAvailable));
 		}
 	}
 }

@@ -74,13 +74,15 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(release.Download.Packages, Is.Not.Null);
 			Assert.That(release.Download.Packages.Count, Is.GreaterThan(0));
 
-			Assert.That(release.Download.Packages[0].Id, Is.EqualTo(2));
-			Assert.That(release.Download.Packages[0].Description, Is.EqualTo("standard"));
-			Assert.That(release.Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(release.Download.Packages[0].Price.SevendigitalPrice, Is.GreaterThan(0));
-			Assert.That(release.Download.Packages[0].Price.RecommendedRetailPrice, Is.GreaterThan(0));
-			Assert.That(release.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
-			Assert.That(release.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
+			var package = release.Download.PrimaryPackage();
+
+			Assert.That(package.Id, Is.EqualTo(2));
+			Assert.That(package.Description, Is.EqualTo("standard"));
+			Assert.That(package.Price.CurrencyCode, Is.EqualTo("GBP"));
+			Assert.That(package.Price.SevendigitalPrice, Is.GreaterThan(0));
+			Assert.That(package.Price.RecommendedRetailPrice, Is.GreaterThan(0));
+			Assert.That(package.Formats[0].Id, Is.EqualTo((17)));
+			Assert.That(package.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
 		private async Task<Release> GetTestRelease()

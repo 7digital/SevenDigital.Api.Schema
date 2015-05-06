@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Schema.Attributes;
+using SevenDigital.Api.Schema.Legacy;
 using SevenDigital.Api.Schema.Media;
 using SevenDigital.Api.Schema.Packages;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
@@ -54,10 +55,10 @@ namespace SevenDigital.Api.Schema.Releases
 		public bool AddedDateSpecified { get { return AddedDate > DateTime.MinValue; } }
 
 		[Obsolete]
-		public Price Price { get { return DownloadLegacyData.PrimaryPackagePrice(Download); } }
+		public Price Price { get { return PriceLegacyMapper.PrimaryPackagePrice(Download); } }
 
 		[Obsolete]
-		public FormatList Formats { get { return DownloadLegacyData.PrimaryPackageFormats(Download); } }
+		public FormatList Formats { get { return FormatLegacyMapper.PrimaryPackageFormats(Download); } }
 
 		[XmlElement("label")]
 		public Label Label { get; set; }

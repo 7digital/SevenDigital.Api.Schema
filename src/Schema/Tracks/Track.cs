@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Schema.Attributes;
+using SevenDigital.Api.Schema.Legacy;
 using SevenDigital.Api.Schema.Media;
 using SevenDigital.Api.Schema.Packages;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
@@ -55,8 +56,8 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("image")]
 		public string Image { get; set; }
 
-		[XmlElement("price")]
-		public Price Price { get; set; }
+		[Obsolete]
+		public Price Price { get { return PriceLegacyMapper.PrimaryPackagePrice(Download); } }
 
 		[XmlElement(ElementName = "streamingReleaseDate", IsNullable = true)]
 		public DateTime? StreamingReleaseDate { get; set; }
@@ -64,8 +65,8 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("discNumber")]
 		public int DiscNumber { get; set; }
 
-		[XmlElement("formats")]
-		public FormatList Formats { get; set; }
+		[Obsolete]
+		public FormatList Formats { get { return FormatLegacyMapper.PrimaryPackageFormats(Download); } }
 
 		/// <summary>
 		/// Track Number. Should be used instead of "TrackNumber"
