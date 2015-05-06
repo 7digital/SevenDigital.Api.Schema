@@ -20,15 +20,23 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		}
 		
 		[Test]
-		public async Task Can_hit_endpoint()
+		public async Task Can_hit_endpoint_and_get_text_metdata()
 		{
 			var release = await GetTestRelease();
 
 			Assert.That(release, Is.Not.Null);
 			Assert.That(release.Title, Is.EqualTo("Strangeland"));
 			Assert.That(release.Artist.Name, Is.EqualTo("Keane"));
+		}
+
+		[Test]
+		public async Task Can_hit_endpoint_and_get_numeric_metdata()
+		{
+			var release = await GetTestRelease();
+
+			Assert.That(release, Is.Not.Null);
 			Assert.That(release.TrackCount, Is.EqualTo(12));
-			Assert.That(release.StreamingReleaseDate, Is.EqualTo(DateTime.Parse("2012-05-07")));
+			Assert.That(release.StreamingReleaseDate, Is.EqualTo(new DateTime(2012, 05, 07)));
 			Assert.That(release.Duration, Is.EqualTo(2716));
 			Assert.That(release.Price.Currency.Symbol, Is.EqualTo("£"));
 		}
@@ -43,6 +51,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(release.Formats.Formats, Is.Not.Null);
 			Assert.That(release.Formats.Formats.Count, Is.GreaterThan(0));
 			Assert.That(release.Formats.Formats[0].FileFormat, Is.EqualTo("MP3"));
+			Assert.That(release.Formats.Formats[0].BitRate, Is.EqualTo("320"));
 		}
 
 		[Test]

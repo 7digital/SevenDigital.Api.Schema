@@ -74,7 +74,7 @@ namespace SevenDigital.Api.Schema.Tracks
 		public int Number { get; set; }
 
 		[XmlElement("download")]
-		public PackageList Download { get; set; }
+		public Download Download { get; set; }
 
 		public override string ToString()
 		{

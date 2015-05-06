@@ -53,11 +53,11 @@ namespace SevenDigital.Api.Schema.Releases
 		[XmlIgnore]
 		public bool AddedDateSpecified { get { return AddedDate > DateTime.MinValue; } }
 
-		[XmlElement("price")]
-		public Price Price { get; set; }
+		[Obsolete]
+		public Price Price { get { return DownloadLegacyData.PrimaryPackagePrice(Download); } }
 
-		[XmlElement("formats")]
-		public FormatList Formats { get; set; }
+		[Obsolete]
+		public FormatList Formats { get { return DownloadLegacyData.PrimaryPackageFormats(Download); } }
 
 		[XmlElement("label")]
 		public Label Label { get; set; }
@@ -75,7 +75,7 @@ namespace SevenDigital.Api.Schema.Releases
 		public int? TrackCount { get; set; }
 
 		[XmlElement("download")]
-		public PackageList Download { get; set; }
+		public Download Download { get; set; }
 
 		public override string ToString()
 		{
