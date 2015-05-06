@@ -51,15 +51,10 @@ namespace SevenDigital.Api.Schema.Legacy
 
 			var currencySymbol = currencySymbolMap[packagePrice.CurrencyCode];
 
+			var rrp = FormatPrice(packagePrice.RecommendedRetailPrice);
+			var priceValue = FormatPrice(packagePrice.SevendigitalPrice);
 			var formattedRrp = FormatPriceWithSymbol(packagePrice.RecommendedRetailPrice, currencySymbol);
 			var formattedPriceValue = FormatPriceWithSymbol(packagePrice.SevendigitalPrice, currencySymbol);
-
-			var rrp = packagePrice.RecommendedRetailPrice != null
-				? packagePrice.RecommendedRetailPrice.Value.ToString()
-				: null;
-			var priceValue = packagePrice.SevendigitalPrice != null
-				? packagePrice.SevendigitalPrice.Value.ToString()
-				: null;
 
 			return new Price
 			{
@@ -75,6 +70,17 @@ namespace SevenDigital.Api.Schema.Legacy
 				IsOnSale = isOnSale
 			};
 		}
+
+		private static string FormatPrice(decimal? price)
+		{
+			if (!price.HasValue)
+			{
+				return string.Empty;
+			}
+
+			return price.Value.ToString("##0.00");
+		}
+
 		private static string FormatPriceWithSymbol(decimal? price, string currencySymbol)
 		{
 			if (!price.HasValue)

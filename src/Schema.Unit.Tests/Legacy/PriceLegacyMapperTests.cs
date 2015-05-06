@@ -73,9 +73,9 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Legacy
 			var converted = PriceLegacyMapper.PrimaryPackagePrice(download);
 
 			Assert.That(converted.IsOnSale, Is.False);
-			Assert.That(converted.Rrp, Is.EqualTo("0"));
+			Assert.That(converted.Rrp, Is.EqualTo("0.00"));
 			Assert.That(converted.FormattedRrp, Is.EqualTo("£0.00"));
-			Assert.That(converted.Value, Is.EqualTo("0"));
+			Assert.That(converted.Value, Is.EqualTo("0.00"));
 			Assert.That(converted.FormattedPrice, Is.EqualTo("£0.00"));
 			Assert.That(converted.Status, Is.EqualTo(PriceStatus.Free));
 		}
@@ -90,9 +90,9 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Legacy
 			var converted = PriceLegacyMapper.PrimaryPackagePrice(download);
 
 			Assert.That(converted.IsOnSale, Is.False);
-			Assert.That(converted.Rrp, Is.Null);
+			Assert.That(converted.Rrp, Is.Empty);
 			Assert.That(converted.FormattedRrp, Is.EqualTo("N/A"));
-			Assert.That(converted.Value, Is.Null);
+			Assert.That(converted.Value, Is.Empty);
 			Assert.That(converted.FormattedPrice, Is.EqualTo("N/A"));
 			Assert.That(converted.Status, Is.EqualTo(PriceStatus.UnAvailable));
 		}
