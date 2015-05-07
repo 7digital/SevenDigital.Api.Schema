@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
@@ -27,14 +28,44 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(track.Title, Is.EqualTo("Never Gonna Give You Up"));
 			Assert.That(track.Price, Is.Not.Null);
 			Assert.That(track.Price.Status, Is.EqualTo(PriceStatus.Available));
+		}
 
-			Assert.That(track.Download.Packages[0].Id, Is.EqualTo(2));
-			Assert.That(track.Download.Packages[0].Description, Is.EqualTo("standard"));
-			Assert.That(track.Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(track.Download.Packages[0].Price.SevendigitalPrice, Is.EqualTo(0.99));
-			Assert.That(track.Download.Packages[0].Price.RecommendedRetailPrice, Is.EqualTo(0.99));
-			Assert.That(track.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
-			Assert.That(track.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
+		[Test]
+		public async Task Track_has_download_data()
+		{
+			var modernTimes = new DateTime(1990, 1, 1);
+
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(1996067);
+			var releaseTracks = await request.Please();
+			var track = releaseTracks.Tracks.First();
+
+			Assert.That(track.Download, Is.Not.Null);
+			Assert.That(track.Download.Packages, Is.Not.Null);
+			Assert.That(track.Download.Packages.Count, Is.GreaterThan(0));
+
+			Assert.That(track.Download.ReleaseDate.HasValue, Is.True);
+			Assert.That(track.Download.ReleaseDate.Value, Is.GreaterThan(modernTimes));
+		}
+
+		[Test]
+		public async Task Track_has_download_package()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(1996067);
+			var releaseTracks = await request.Please();
+
+			var track = releaseTracks.Tracks.First();
+
+			var primaryPackage = track.Download.PrimaryPackage();
+
+			Assert.That(primaryPackage.Id, Is.EqualTo(2));
+			Assert.That(primaryPackage.Description, Is.EqualTo("standard"));
+			Assert.That(primaryPackage.Price.CurrencyCode, Is.EqualTo("GBP"));
+			Assert.That(primaryPackage.Price.SevendigitalPrice, Is.EqualTo(0.99));
+			Assert.That(primaryPackage.Price.RecommendedRetailPrice, Is.EqualTo(0.99));
+			Assert.That(primaryPackage.Formats[0].Id, Is.EqualTo((17)));
+			Assert.That(primaryPackage.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
 		[Test]

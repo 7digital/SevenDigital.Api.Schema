@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Wrapper;
@@ -9,13 +10,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	[TestFixture]
 	public class TrackDetailsTests
 	{
-		private IApi _api;
-
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
+		private readonly IApi _api = new ApiConnection();
+		
 		
 		[Test]
 		public async Task Can_hit_track_endpoint()
@@ -81,8 +77,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
-		public async Task Track_has_packages()
+		public async Task Track_has_download_data()
 		{
+			var modernTimes = new DateTime(1990, 1, 1);
+
 			var track = await GetTestTrack();
 
 			Assert.That(track, Is.Not.Null);
@@ -90,13 +88,26 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.Download.Packages, Is.Not.Null);
 			Assert.That(track.Download.Packages.Count, Is.GreaterThan(0));
 
-			Assert.That(track.Download.Packages[0].Id, Is.EqualTo(2));
-			Assert.That(track.Download.Packages[0].Description, Is.EqualTo("standard"));
-			Assert.That(track.Download.Packages[0].Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(track.Download.Packages[0].Price.SevendigitalPrice, Is.EqualTo(0.99));
-			Assert.That(track.Download.Packages[0].Price.RecommendedRetailPrice, Is.EqualTo(0.99));
-			Assert.That(track.Download.Packages[0].Formats[0].Id, Is.EqualTo((17)));
-			Assert.That(track.Download.Packages[0].Formats[0].Description, Is.EqualTo("MP3 320"));
+			Assert.That(track.Download.ReleaseDate.HasValue, Is.True);
+			Assert.That(track.Download.ReleaseDate.Value, Is.GreaterThan(modernTimes));
+		}
+
+		[Test]
+		public async Task Track_has_download_packages()
+		{
+			var track = await GetTestTrack();
+
+			Assert.That(track, Is.Not.Null);
+
+			var primaryPackage = track.Download.PrimaryPackage();
+
+			Assert.That(primaryPackage.Id, Is.EqualTo(2));
+			Assert.That(primaryPackage.Description, Is.EqualTo("standard"));
+			Assert.That(primaryPackage.Price.CurrencyCode, Is.EqualTo("GBP"));
+			Assert.That(primaryPackage.Price.SevendigitalPrice, Is.EqualTo(0.99));
+			Assert.That(primaryPackage.Price.RecommendedRetailPrice, Is.EqualTo(0.99));
+			Assert.That(primaryPackage.Formats[0].Id, Is.EqualTo((17)));
+			Assert.That(primaryPackage.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
 		private async Task<Track> GetTestTrack()

@@ -65,14 +65,25 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		}
 
 		[Test]
-		public async Task Release_has_packages()
+		public async Task Release_has_download_data()
 		{
+			var modernTimes = new DateTime(1990, 1, 1);
+
 			var release = await GetTestRelease();
 
 			Assert.That(release, Is.Not.Null);
 			Assert.That(release.Download, Is.Not.Null);
 			Assert.That(release.Download.Packages, Is.Not.Null);
 			Assert.That(release.Download.Packages.Count, Is.GreaterThan(0));
+
+			Assert.That(release.Download.ReleaseDate.HasValue, Is.True);
+			Assert.That(release.Download.ReleaseDate.Value, Is.GreaterThan(modernTimes));
+		}
+
+		[Test]
+		public async Task Release_has_package_details()
+		{
+			var release = await GetTestRelease();
 
 			var package = release.Download.PrimaryPackage();
 
