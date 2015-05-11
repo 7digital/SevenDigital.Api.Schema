@@ -11,8 +11,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	public class TrackDetailsTests
 	{
 		private readonly IApi _api = new ApiConnection();
-		
-		
+
 		[Test]
 		public async Task Can_hit_track_endpoint()
 		{
@@ -85,27 +84,35 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Download, Is.Not.Null);
+			Assert.That(track.Download.ReleaseDate, Is.GreaterThan(modernTimes));
+
 			Assert.That(track.Download.Packages, Is.Not.Null);
 			Assert.That(track.Download.Packages.Count, Is.GreaterThan(0));
 
-			Assert.That(track.Download.ReleaseDate.HasValue, Is.True);
-			Assert.That(track.Download.ReleaseDate.Value, Is.GreaterThan(modernTimes));
+			var primaryPackage = track.Download.PrimaryPackage();
+
+			Assert.That(primaryPackage, Is.Not.Null);
+			Assert.That(primaryPackage.Id, Is.EqualTo(2));
+			Assert.That(primaryPackage.Description, Is.EqualTo("standard"));
 		}
 
 		[Test]
-		public async Task Track_has_download_packages()
+		public async Task Track_has_download_price()
 		{
 			var track = await GetTestTrack();
-
-			Assert.That(track, Is.Not.Null);
-
 			var primaryPackage = track.Download.PrimaryPackage();
 
-			Assert.That(primaryPackage.Id, Is.EqualTo(2));
-			Assert.That(primaryPackage.Description, Is.EqualTo("standard"));
 			Assert.That(primaryPackage.Price.CurrencyCode, Is.EqualTo("GBP"));
 			Assert.That(primaryPackage.Price.SevendigitalPrice, Is.EqualTo(0.99));
 			Assert.That(primaryPackage.Price.RecommendedRetailPrice, Is.EqualTo(0.99));
+		}
+
+		[Test]
+		public async Task Track_has_download_formats()
+		{
+			var track = await GetTestTrack();
+			var primaryPackage = track.Download.PrimaryPackage();
+
 			Assert.That(primaryPackage.Formats[0].Id, Is.EqualTo((17)));
 			Assert.That(primaryPackage.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
@@ -116,6 +123,5 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 				.ForTrackId(12345);
 			return await request.Please();
 		}
-
 	}
 }
