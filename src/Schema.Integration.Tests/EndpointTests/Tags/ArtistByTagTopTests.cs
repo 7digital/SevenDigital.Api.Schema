@@ -12,14 +12,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 	{
 		private const string Tags = "rock,pop";
 
-		private IApi _api;
+		private IApi _api = new ApiConnection();
 
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
-		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{

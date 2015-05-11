@@ -11,14 +11,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 	[Category("Integration")]
 	public class ReleaseByTagTopTests
 	{
-		private IApi _api;
+		private readonly IApi _api = new ApiConnection();
 
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
-		
 		[Test]
 		public async Task Can_hit_endpoint()
 		{

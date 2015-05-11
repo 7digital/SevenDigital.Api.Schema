@@ -9,13 +9,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[TestFixture]
 	public class ReleaseRecommendTests
 	{
-		private IApi _api;
-
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
+		private readonly IApi _api = new ApiConnection();
 		
 		[Test]
 		public async Task Can_hit_endpoint()

@@ -10,16 +10,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	[TestFixture]
 	public class ReleaseBatchTests
 	{
-		private IApi _api;
+		private readonly IApi _api = new ApiConnection();
 
 		private const int FirstId = 12345;
 		private const int SecondId = 12346;
-
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
 
 		[Test]
 		public async Task Should_return_releases_from_api()

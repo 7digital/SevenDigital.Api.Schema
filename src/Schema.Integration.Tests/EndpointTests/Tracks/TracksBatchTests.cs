@@ -10,15 +10,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	[TestFixture]
 	public class TracksBatchTests
 	{
-		private IApi _api;
+		private readonly IApi _api = new ApiConnection();
+
 		private const int FirstId = 12345;
 		private const int SecondId = 12346;
-
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			_api = new ApiConnection();
-		}
 
 		[Test]
 		public async Task Should_return_tracks_from_api()
