@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Packages
 	public class Download
 	{
 		[XmlElement("releaseDate")]
-		public DateTime? ReleaseDate { get; set; }
+		public DateTime ReleaseDate { get; set; }
 
 		[XmlArray("packages")]
 		[XmlArrayItem("package")]
