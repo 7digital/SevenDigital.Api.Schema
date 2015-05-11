@@ -83,7 +83,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(track.Price.Status, Is.EqualTo(PriceStatus.Free));
 		}
 
-		[Test, Ignore("not ready yet")]
+		[Test]
 		public async Task can_determine_if_a_track_is_available_separately()
 		{
 			var request = _api.Create<ReleaseTracks>()
