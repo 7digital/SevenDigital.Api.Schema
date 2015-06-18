@@ -53,6 +53,7 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("url")]
 		public string Url { get; set; }
 
+		[Obsolete("This is not on the track response")]
 		[XmlElement("image")]
 		public string Image { get; set; }
 
