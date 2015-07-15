@@ -16,6 +16,7 @@ Notes for coders
 * The code is compiled to .net 4.0 for use in that version or later.
 * To avoid name clashes, the folder name and corresponding namespace is plural, the classes inside it are singular. e.g. class `Release` in namespace  `Releases`. i.e. The fully qualified name is `SevenDigital.Api.Schema.Releases.Release`.
 * Use tabs not spaces.
+* In order to make a new package version on nuget.org, you can use the  PowerShell script in `buildpackage/buildPackage.ps1` You will first need an authorised login on nuget.org, the api key from [your nuget account](https://www.nuget.org/account), and the nuget commandline tools [from here](https://chocolatey.org/packages/NuGet.CommandLine) or similar.
 
 ### Output generation as XML and json ###
 
