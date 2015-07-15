@@ -12,5 +12,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 
 		[XmlElement("visibility")]
 		public PlaylistVisibilityType Visibility { get; set; }
+
+		[XmlElement("status")]
+		public PlaylistStatusType Status { get; set; }
 	}
 }
