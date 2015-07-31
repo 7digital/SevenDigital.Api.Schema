@@ -117,6 +117,16 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(primaryPackage.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
+		[Test]
+		public async Task Track_has_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.WithParameter("usageTypes", "subscriptionStreaming");
+			var track = await request.Please();
+			Assert.That(track.SubscriptionStreaming, Is.Not.Null);
+		}
+
 		private async Task<Track> GetTestTrack()
 		{
 			var request = _api.Create<Track>()
