@@ -116,5 +116,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(price, Is.Not.Null);
 			Assert.That(price.SevendigitalPrice.HasValue, Is.False);
 		}
+
+		[Test]
+		public async Task Track_has_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(394123)
+				.WithParameter("usageTypes", "subscriptionStreaming");
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var subscriptionStreaming = releaseTracks.Tracks.Select(t => t.SubscriptionStreaming);
+			Assert.That(subscriptionStreaming, Is.All.Not.Null);
+		}
 	}
 }
