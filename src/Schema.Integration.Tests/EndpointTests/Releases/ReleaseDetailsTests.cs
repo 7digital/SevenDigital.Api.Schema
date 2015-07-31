@@ -95,6 +95,19 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(package.Price.RecommendedRetailPrice, Is.GreaterThan(0));
 		}
 
+		[Test]
+		public async Task Release_has_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<Release>()
+				.ForReleaseId(1685647)
+				.WithParameter("country", "GB")
+				.WithParameter("usageTypes", "subscriptionStreaming");
+
+			var release = await request.Please();
+
+			Assert.That(release.SubscriptionStreaming, Is.Not.Null);
+		}
+
 		private async Task<Release> GetTestRelease()
 		{
 			var request = _api.Create<Release>()

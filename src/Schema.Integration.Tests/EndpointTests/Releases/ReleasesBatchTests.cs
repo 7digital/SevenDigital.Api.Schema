@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
+using SevenDigital.Api.Schema.Packages;
 using SevenDigital.Api.Schema.Releases;
 using SevenDigital.Api.Wrapper;
 
@@ -107,6 +109,28 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(response.Errors, Is.Not.Null);
 			Assert.That(response.Errors.Count, Is.EqualTo(0));
+		}
+
+		[Test]
+		public async Task Should_return_subscription_streaming_when_requested()
+		{
+			var ids = new List<int> { FirstId };
+			var request = _api.Create<ReleasesBatch>()
+				.WithParameter("releaseids", ids)
+				.WithParameter("usageTypes", "subscriptionStreaming")
+				.ForShop(34);
+
+
+			var response = await request.Please();
+
+			Assert.That(response, Is.Not.Null);
+
+			Assert.That(response.Releases, Is.Not.Null);
+			Assert.That(response.Releases.Count, Is.EqualTo(1));
+
+			var subscriptionStreaming = response.Releases.Select(r => r.SubscriptionStreaming).ToList();
+			Assert.That(subscriptionStreaming.Count, Is.EqualTo(1));
+			Assert.That(subscriptionStreaming[0], Is.Not.Null);
 		}
 	}
 }
