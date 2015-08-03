@@ -159,5 +159,23 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(download.Select(d => d.PreviewDate), Is.All.Not.EqualTo(default(DateTime)));
 			Assert.That(download.Select(d => d.Packages), Is.All.Not.Empty);
 		}
+
+		[Test]
+		public async Task Release_has_slug_when_usage_types_are_requested()
+		{
+			var ids = new List<int> { FirstId, SecondId };
+			var request = _api.Create<ReleasesBatch>()
+				.WithParameter("releaseids", ids)
+				.WithParameter("usageTypes", "download,subscriptionStreaming")
+				.ForShop(34);
+
+			var response = await request.Please();
+
+			var releaseSlugs = response.Releases.Select(r => r.Slug);
+			var artistSlugs = response.Releases.Select(r => r.Artist.Slug);
+			Assert.That(releaseSlugs, Is.All.Not.Null);
+			Assert.That(artistSlugs, Is.All.Not.Null);
+		}
+
 	}
 }

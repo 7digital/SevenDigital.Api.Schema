@@ -141,6 +141,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.Download.Packages, Is.Not.Empty);
 		}
 
+		[Test]
+		public async Task Track_has_slug_when_usage_types_are_requested()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.WithParameter("usageTypes", "download,subscriptionStreaming");
+			var track = await request.Please();
+			Assert.That(track.Artist.Slug, Is.Not.Null);
+			Assert.That(track.Release.Slug, Is.Not.Null);
+			Assert.That(track.Release.Artist.Slug, Is.Not.Null);
+		}
+
 		private async Task<Track> GetTestTrack()
 		{
 			var request = _api.Create<Track>()

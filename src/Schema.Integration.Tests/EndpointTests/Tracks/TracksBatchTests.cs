@@ -112,7 +112,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
-		public async Task Track_has_subscription_streaming_when_requested()
+		public async Task Tracks_have_subscription_streaming_when_requested()
 		{
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
@@ -129,7 +129,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
-		public async Task Track_has_download_streaming_when_requested()
+		public async Task Tracks_have_download_streaming_when_requested()
 		{
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
@@ -143,6 +143,24 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var download = response.Tracks.Select(t => t.Download).ToList();
 			Assert.That(download.Count, Is.EqualTo(2));
 			Assert.That(download, Is.All.Not.Null);
+		}
+
+		[Test]
+		public async Task Tracks_have_slugs_when_usage_types_is_requested()
+		{
+			var ids = new List<int> { FirstId, SecondId };
+			var request = _api.Create<TracksBatch>()
+				.WithParameter("trackids", ids)
+				.WithParameter("usageTypes", "download,subscriptionStreaming")
+				.ForShop(34);
+
+			var response = await request.Please();
+			var releaseSlugs = response.Tracks.Select(t => t.Release.Slug);
+			var releaseArtistSlugs = response.Tracks.Select(t => t.Release.Artist.Slug);
+			var artistSlugs = response.Tracks.Select(t => t.Artist.Slug);
+			Assert.That(releaseSlugs, Is.All.Not.Null);
+			Assert.That(releaseArtistSlugs, Is.All.Not.Null);
+			Assert.That(artistSlugs, Is.All.Not.Null);
 		}
 	}
 }

@@ -125,6 +125,19 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(release.Download.Packages, Is.Not.Empty);
 		}
 
+		[Test]
+		public async Task Release_has_slug_when_usage_types_are_requested()
+		{
+			var request = _api.Create<Release>()
+			.ForReleaseId(12345)
+			.WithParameter("country", "GB")
+			.WithParameter("usageTypes", "download,subscriptionStreaming");
+
+			var release = await request.Please();
+			Assert.That(release.Slug, Is.Not.Null);
+			Assert.That(release.Artist.Slug, Is.Not.Null);
+		}
+
 		private async Task<Release> GetTestRelease()
 		{
 			var request = _api.Create<Release>()
