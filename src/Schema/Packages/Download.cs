@@ -11,6 +11,9 @@ namespace SevenDigital.Api.Schema.Packages
 		[XmlElement("releaseDate")]
 		public DateTime ReleaseDate { get; set; }
 
+		[XmlElement("previewDate")]
+		public DateTime? PreviewDate { get; set; }
+
 		[XmlArray("packages")]
 		[XmlArrayItem("package")]
 		public List<Package> Packages { get; set; }

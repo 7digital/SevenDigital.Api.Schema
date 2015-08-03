@@ -129,5 +129,18 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var subscriptionStreaming = releaseTracks.Tracks.Select(t => t.SubscriptionStreaming);
 			Assert.That(subscriptionStreaming, Is.All.Not.Null);
 		}
+
+		[Test]
+		public async Task Track_has_download_when_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(1996067)
+				.WithParameter("usageTypes", "download");
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var download = releaseTracks.Tracks.Select(t => t.Download);
+			Assert.That(download, Is.All.Not.Null);
+		}
 	}
 }

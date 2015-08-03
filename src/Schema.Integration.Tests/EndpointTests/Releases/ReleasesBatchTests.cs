@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -131,6 +132,32 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var subscriptionStreaming = response.Releases.Select(r => r.SubscriptionStreaming).ToList();
 			Assert.That(subscriptionStreaming.Count, Is.EqualTo(1));
 			Assert.That(subscriptionStreaming[0], Is.Not.Null);
+			Assert.That(subscriptionStreaming[0].ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
+		public async Task Should_return_download_when_requested()
+		{
+			var ids = new List<int> { FirstId, SecondId };
+			var request = _api.Create<ReleasesBatch>()
+				.WithParameter("releaseids", ids)
+				.WithParameter("usageTypes", "download")
+				.ForShop(34);
+
+
+			var response = await request.Please();
+
+			Assert.That(response, Is.Not.Null);
+
+			Assert.That(response.Releases, Is.Not.Null);
+			Assert.That(response.Releases.Count, Is.EqualTo(2));
+
+			var download = response.Releases.Select(r => r.Download).ToList();
+			Assert.That(download.Count, Is.EqualTo(2));
+			Assert.That(download, Is.All.Not.Null);
+			Assert.That(download.Select(d => d.ReleaseDate), Is.All.Not.EqualTo(default(DateTime)));
+			Assert.That(download.Select(d => d.PreviewDate), Is.All.Not.EqualTo(default(DateTime)));
+			Assert.That(download.Select(d => d.Packages), Is.All.Not.Empty);
 		}
 	}
 }
