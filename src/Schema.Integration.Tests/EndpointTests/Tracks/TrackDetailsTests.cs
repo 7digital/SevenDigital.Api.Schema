@@ -117,6 +117,42 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(primaryPackage.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
+		[Test]
+		public async Task Track_has_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.WithParameter("usageTypes", "subscriptionStreaming");
+			var track = await request.Please();
+			Assert.That(track.SubscriptionStreaming, Is.Not.Null);
+			Assert.That(track.SubscriptionStreaming.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
+		public async Task Track_has_download_when_requested()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.WithParameter("usageTypes", "download");
+			var track = await request.Please();
+			Assert.That(track.Download, Is.Not.Null);
+			Assert.That(track.Download.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+			Assert.That(track.Download.PreviewDate, Is.Not.EqualTo(default(DateTime)));
+			Assert.That(track.Download.Packages, Is.Not.Empty);
+		}
+
+		[Test]
+		public async Task Track_has_slug_when_usage_types_are_requested()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.WithParameter("usageTypes", "download,subscriptionStreaming");
+			var track = await request.Please();
+			Assert.That(track.Artist.Slug, Is.Not.Null);
+			Assert.That(track.Release.Slug, Is.Not.Null);
+			Assert.That(track.Release.Artist.Slug, Is.Not.Null);
+		}
+
 		private async Task<Track> GetTestTrack()
 		{
 			var request = _api.Create<Track>()

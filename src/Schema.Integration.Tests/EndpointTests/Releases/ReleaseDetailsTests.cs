@@ -95,6 +95,49 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(package.Price.RecommendedRetailPrice, Is.GreaterThan(0));
 		}
 
+		[Test]
+		public async Task Release_has_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<Release>()
+				.ForReleaseId(1685647)
+				.WithParameter("country", "GB")
+				.WithParameter("usageTypes", "subscriptionStreaming");
+
+			var release = await request.Please();
+
+			Assert.That(release.SubscriptionStreaming, Is.Not.Null);
+			Assert.That(release.SubscriptionStreaming.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
+		public async Task Release_has_download_when_requested()
+		{
+			var request = _api.Create<Release>()
+				.ForReleaseId(12345)
+				.WithParameter("country", "GB")
+				.WithParameter("usageTypes", "download");
+
+			var release = await request.Please();
+
+			Assert.That(release.Download, Is.Not.Null);
+			Assert.That(release.Download.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+			Assert.That(release.Download.PreviewDate, Is.Not.EqualTo(default(DateTime)));
+			Assert.That(release.Download.Packages, Is.Not.Empty);
+		}
+
+		[Test]
+		public async Task Release_has_slug_when_usage_types_are_requested()
+		{
+			var request = _api.Create<Release>()
+			.ForReleaseId(12345)
+			.WithParameter("country", "GB")
+			.WithParameter("usageTypes", "download,subscriptionStreaming");
+
+			var release = await request.Please();
+			Assert.That(release.Slug, Is.Not.Null);
+			Assert.That(release.Artist.Slug, Is.Not.Null);
+		}
+
 		private async Task<Release> GetTestRelease()
 		{
 			var request = _api.Create<Release>()

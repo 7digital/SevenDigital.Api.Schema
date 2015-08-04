@@ -28,6 +28,9 @@ namespace SevenDigital.Api.Schema.Artists
 		[XmlElement("url")]
 		public string Url { get; set; }
 
+		[XmlElement("slug")]
+		public string Slug { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1}", Id, Name);

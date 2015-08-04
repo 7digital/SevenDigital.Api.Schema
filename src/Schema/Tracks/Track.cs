@@ -78,6 +78,9 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("download")]
 		public Download Download { get; set; }
 
+		[XmlElement("subscriptionStreaming")]
+		public Streaming SubscriptionStreaming { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1} {2} {3}, ISRC: {4}", Id, Title, Version, Type, Isrc);

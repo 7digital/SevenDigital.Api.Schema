@@ -116,5 +116,48 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(price, Is.Not.Null);
 			Assert.That(price.SevendigitalPrice.HasValue, Is.False);
 		}
+
+		[Test]
+		public async Task Tracks_have_subscription_streaming_when_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(394123)
+				.WithParameter("usageTypes", "subscriptionStreaming");
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var subscriptionStreaming = releaseTracks.Tracks.Select(t => t.SubscriptionStreaming);
+			Assert.That(subscriptionStreaming, Is.All.Not.Null);
+		}
+
+		[Test]
+		public async Task Tracks_have_download_when_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(1996067)
+				.WithParameter("usageTypes", "download");
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var download = releaseTracks.Tracks.Select(t => t.Download);
+			Assert.That(download, Is.All.Not.Null);
+		}
+
+		[Test]
+		public async Task Tracks_have_slug_when_usage_types_is_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+				.ForReleaseId(1996067)
+				.WithParameter("usageTypes", "download,subscriptionStreaming");
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var trackArtistSlugs = releaseTracks.Tracks.Select(t => t.Artist.Slug);
+			var trackReleaseSlugs = releaseTracks.Tracks.Select(t => t.Release.Slug);
+			var trackReleaseArtistSlugs = releaseTracks.Tracks.Select(t => t.Release.Artist.Slug);
+			Assert.That(trackArtistSlugs, Is.All.Not.Null);
+			Assert.That(trackReleaseSlugs, Is.All.Not.Null);
+			Assert.That(trackReleaseArtistSlugs, Is.All.Not.Null);
+		}
 	}
 }
