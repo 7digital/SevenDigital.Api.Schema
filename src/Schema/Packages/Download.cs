@@ -14,6 +14,11 @@ namespace SevenDigital.Api.Schema.Packages
 		[XmlElement("previewDate")]
 		public DateTime? PreviewDate { get; set; }
 
+		public bool ShouldSerializePreviewDate()
+		{
+			return PreviewDate.HasValue;
+		}
+
 		[XmlArray("packages")]
 		[XmlArrayItem("package")]
 		public List<Package> Packages { get; set; }
