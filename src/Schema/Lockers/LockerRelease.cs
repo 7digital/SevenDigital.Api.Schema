@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using SevenDigital.Api.Schema.Releases;
 
 namespace SevenDigital.Api.Schema.Lockers
 {
@@ -9,7 +8,7 @@ namespace SevenDigital.Api.Schema.Lockers
 	public class LockerRelease
 	{
 		[XmlElement("release")]
-		public Release Release { get; set; }
+		public ReleaseInLocker Release { get; set; }
 
 		[XmlArray("lockerTracks")]
 		[XmlArrayItem("lockerTrack")]

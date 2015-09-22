@@ -72,6 +72,7 @@
     <Compile Include="Lockers\Locker.cs" />
     <Compile Include="Lockers\LockerRelease.cs" />
     <Compile Include="Lockers\LockerTrack.cs" />
+    <Compile Include="Lockers\ReleaseInLocker.cs" />
     <Compile Include="Matching\ArtistMatchResponse.cs" />
     <Compile Include="Matching\MatchError.cs" />
     <Compile Include="Matching\ReleaseMatchResponse.cs" />
