@@ -36,7 +36,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(release, Is.Not.Null);
 			Assert.That(release.TrackCount, Is.EqualTo(12));
-			Assert.That(release.StreamingReleaseDate, Is.EqualTo(new DateTime(2012, 05, 07)));
+			Assert.That(release.StreamingReleaseDate, Is.EqualTo(new DateTime(2015, 08, 18)));
 			Assert.That(release.Duration, Is.EqualTo(2716));
 		}
 
@@ -67,7 +67,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var package = release.Download.PrimaryPackage();
 
 			Assert.That(package.Id, Is.EqualTo(2));
-			Assert.That(package.Description, Is.EqualTo("standard"));
+			Assert.That(package.Description, Is.EqualTo("Standard"));
 		}
 
 		[Test]

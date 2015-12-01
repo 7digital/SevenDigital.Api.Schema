@@ -93,7 +93,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 
 			Assert.That(primaryPackage, Is.Not.Null);
 			Assert.That(primaryPackage.Id, Is.EqualTo(2));
-			Assert.That(primaryPackage.Description, Is.EqualTo("standard"));
+			Assert.That(primaryPackage.Description, Is.EqualTo("Standard"));
 		}
 
 		[Test]
