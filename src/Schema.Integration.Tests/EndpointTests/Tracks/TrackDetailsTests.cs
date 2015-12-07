@@ -34,6 +34,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(track.Artist.Id, Is.EqualTo(437));
 			Assert.That(track.Artist.Name, Is.EqualTo("The Dandy Warhols"));
 			Assert.That(track.Artist.AppearsAs, Is.EqualTo("The Dandy Warhols"));
+			Assert.That(track.Artist.IsPlaceholderImage, Is.True);
 		}
 
 		[Test]
