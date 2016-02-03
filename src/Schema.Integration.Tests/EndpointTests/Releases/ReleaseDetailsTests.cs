@@ -36,7 +36,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(release, Is.Not.Null);
 			Assert.That(release.TrackCount, Is.EqualTo(12));
-			Assert.That(release.StreamingReleaseDate, Is.EqualTo(new DateTime(2015, 08, 18)));
+			Assert.That(release.StreamingReleaseDate, Is.EqualTo(new DateTime(2016, 01, 17)));
 			Assert.That(release.Duration, Is.EqualTo(2716));
 		}
 
