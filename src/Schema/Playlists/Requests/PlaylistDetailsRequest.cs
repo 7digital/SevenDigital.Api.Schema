@@ -15,5 +15,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 
 		[XmlElement("status")]
 		public PlaylistStatusType Status { get; set; }
+
+		[XmlElement("description")]
+		public string Description { get; set; }
 	}
 }

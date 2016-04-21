@@ -23,6 +23,9 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		[XmlElement("status")]
 		public PlaylistStatusType Status { get; set; }
 
+		[XmlElement("description")]
+		public string Description { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1}", Id, Name);
