@@ -10,8 +10,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 	[TestFixture]
 	public class BasketCreateTests
 	{
-		private const int EXPECTED_RELEASE_ID = 160553;
-		private const int EXPECTED_TRACK_ID = 1693930;
+		private const int EXPECTED_RELEASE_ID = 2910562;
+		private const int EXPECTED_TRACK_ID = 31062877;
 		private const int STANDARD_PACKAGE_ID = 2;
 
 		private IApi _api;
@@ -104,10 +104,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 				.ForReleaseId(EXPECTED_RELEASE_ID);
 			var basket = await request.Please();
 
-			Assert.That(basket.BasketItems.First().AmountDue.Amount, Is.EqualTo("7.99"));
-			Assert.That(basket.BasketItems.First().AmountDue.FormattedAmount, Is.EqualTo("£7.99"));
-			Assert.That(basket.AmountDue.Amount, Is.EqualTo("7.99"));
-			Assert.That(basket.AmountDue.FormattedAmount, Is.EqualTo("£7.99"));
+			Assert.That(basket.BasketItems.First().AmountDue.Amount, Is.EqualTo("8.49"));
+			Assert.That(basket.BasketItems.First().AmountDue.FormattedAmount, Is.EqualTo("£8.49"));
+			Assert.That(basket.AmountDue.Amount, Is.EqualTo("8.49"));
+			Assert.That(basket.AmountDue.FormattedAmount, Is.EqualTo("£8.49"));
 		}
 
 		private async Task<string> MakeBasket()
