@@ -12,7 +12,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 	public class ReleaseTracksTests
 	{
 		private readonly IApi _api = new ApiConnection();
-		
+
 		[Test]
 		public async Task Can_hit_endpoint()
 		{
@@ -54,14 +54,14 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Track_has_download_package_price()
 		{
 			var request = _api.Create<ReleaseTracks>()
-                .ForReleaseId(12345);
+				.ForReleaseId(2910562);
 			var releaseTracks = await request.Please();
 			var track = releaseTracks.Tracks.First();
 			var primaryPackage = track.Download.PrimaryPackage();
 
 			Assert.That(primaryPackage.Price.CurrencyCode, Is.EqualTo("GBP"));
-			Assert.That(primaryPackage.Price.SevendigitalPrice, Is.EqualTo(0.89));
-			Assert.That(primaryPackage.Price.RecommendedRetailPrice, Is.EqualTo(0.89));
+			Assert.That(primaryPackage.Price.SevendigitalPrice, Is.EqualTo(0.99));
+			Assert.That(primaryPackage.Price.RecommendedRetailPrice, Is.EqualTo(0.99));
 		}
 
 		[Test]
@@ -102,7 +102,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task can_determine_if_a_track_is_available_separately()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(12345);
+				.ForReleaseId(2910562);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks, Is.Not.Null);
