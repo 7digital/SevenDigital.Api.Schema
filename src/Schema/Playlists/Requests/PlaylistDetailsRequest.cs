@@ -18,5 +18,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 
 		[XmlElement("description")]
 		public string Description { get; set; }
+
+		[XmlElement("image")]
+		public string ImageUrl { get; set; }
 	}
 }

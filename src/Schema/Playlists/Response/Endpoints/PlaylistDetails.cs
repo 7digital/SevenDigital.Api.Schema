@@ -26,6 +26,9 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		[XmlElement("description")]
 		public string Description { get; set; }
 
+		[XmlElement("image")]
+		public string ImageUrl { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1}", Id, Name);
