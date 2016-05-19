@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists.Requests
@@ -21,5 +22,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 
 		[XmlElement("image")]
 		public string ImageUrl { get; set; }
+
+		[XmlElement("tags")]
+		public List<Tag> Tags { get; set; }
 	}
 }
