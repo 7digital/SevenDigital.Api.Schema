@@ -118,7 +118,6 @@
     <Compile Include="Playlists\Requests\PlaylistLocationRequest.cs" />
     <Compile Include="Playlists\Requests\PlaylistRequest.cs" />
     <Compile Include="Playlists\Requests\PlaylistTracksRequest.cs" />
-    <Compile Include="Playlists\Requests\Tag.cs" />
     <Compile Include="Playlists\Response\Endpoints\Playlist.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistDetails.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistTrack.cs" />
@@ -128,6 +127,7 @@
     <Compile Include="Playlists\Response\Link.cs" />
     <Compile Include="Playlists\Response\PlaylistLocation.cs" />
     <Compile Include="Playlists\Response\PlaylistProduct.cs" />
+    <Compile Include="Playlists\Tag.cs" />
     <Compile Include="Playlists\UserBasedUpdatableItem.cs" />
     <Compile Include="Pricing\Currency.cs" />
     <Compile Include="Pricing\Price.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
@@ -28,6 +29,9 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 
 		[XmlElement("image")]
 		public string ImageUrl { get; set; }
+
+		[XmlElement("tags")]
+		public List<Tag> Tags { get; set; }
 
 		public override string ToString()
 		{

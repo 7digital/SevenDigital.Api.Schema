@@ -1,6 +1,6 @@
 using System;
 
-namespace SevenDigital.Api.Schema.Playlists.Requests
+namespace SevenDigital.Api.Schema.Playlists
 {
 	[Serializable]
 	public class Tag
