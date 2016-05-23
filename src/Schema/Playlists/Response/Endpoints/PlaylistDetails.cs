@@ -12,6 +12,11 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 	[XmlRoot("playlist")]
 	public class PlaylistDetails : UserBasedUpdatableItem, HasPlaylistIdParameter
 	{
+		public PlaylistDetails()
+		{
+			Tags = new List<Tag>();
+		}
+
 		[XmlAttribute("id")]
 		public string Id { get; set; }
 
