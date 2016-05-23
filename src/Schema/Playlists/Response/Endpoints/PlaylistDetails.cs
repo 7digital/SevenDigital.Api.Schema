@@ -35,7 +35,8 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		[XmlElement("image")]
 		public string ImageUrl { get; set; }
 
-		[XmlElement("tags")]
+		[XmlArray("tags")]
+		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
 
 		public override string ToString()

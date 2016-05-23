@@ -28,7 +28,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 		[XmlElement("image")]
 		public string ImageUrl { get; set; }
 
-		[XmlElement("tags")]
+		[XmlArray("tags")]
+		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
 	}
 }
