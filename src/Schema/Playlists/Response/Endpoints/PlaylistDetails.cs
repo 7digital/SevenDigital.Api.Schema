@@ -12,6 +12,8 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 	[XmlRoot("playlist")]
 	public class PlaylistDetails : UserBasedUpdatableItem, HasPlaylistIdParameter
 	{
+		private List<Tag> _tags = new List<Tag>();
+
 		[XmlAttribute("id")]
 		public string Id { get; set; }
 
@@ -31,7 +33,11 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		public string ImageUrl { get; set; }
 
 		[XmlElement("tags")]
-		public List<Tag> Tags { get; set; }
+		public List<Tag> Tags
+		{
+			get { return _tags; }
+			set { _tags = value; }
+		}
 
 		public override string ToString()
 		{
