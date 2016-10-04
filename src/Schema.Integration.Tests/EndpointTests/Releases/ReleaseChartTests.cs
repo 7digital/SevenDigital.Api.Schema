@@ -32,8 +32,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(releaseChart, Is.Not.Null);
 			Assert.That(releaseChart.ChartItems.Count, Is.GreaterThan(0));
-			Assert.That(releaseChart.FromDate, Is.GreaterThan(new DateTime(2011, 01, 01)));
-			Assert.That(releaseChart.ToDate, Is.EqualTo(new DateTime(2011, 03, 01)));
 			Assert.That(releaseChart.Type, Is.EqualTo(ChartType.album));
 		}
 
@@ -63,8 +61,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(releaseChart, Is.Not.Null);
 			Assert.That(releaseChart.ChartItems.Count, Is.EqualTo(10));
 			Assert.That(releaseChart.Type, Is.EqualTo(ChartType.album));
-			Assert.That(releaseChart.FromDate, Is.EqualTo(new DateTime(2011, 01, 25)));
-			Assert.That(releaseChart.ToDate, Is.EqualTo(new DateTime(2011, 01, 31)));
 			Assert.That(releaseChart.ChartItems.FirstOrDefault().Release, Is.Not.Null);
 		}
 	}

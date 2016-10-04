@@ -25,8 +25,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 
 			Assert.That(trackChart, Is.Not.Null);
 			Assert.That(trackChart.ChartItems.Count, Is.GreaterThan(0));
-			Assert.That(trackChart.FromDate, Is.GreaterThan(new DateTime(2011, 01, 01)));
-			Assert.That(trackChart.ToDate, Is.EqualTo(new DateTime(2011, 03, 01)));
 			Assert.That(trackChart.Type, Is.EqualTo(ChartType.track));
 
 		}
@@ -58,8 +56,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			Assert.That(trackChart.ChartItems, Is.Not.Null);
 			Assert.That(trackChart.ChartItems.Count, Is.EqualTo(10));
 			Assert.That(trackChart.Type, Is.EqualTo(ChartType.track));
-			Assert.That(trackChart.FromDate, Is.EqualTo(new DateTime(2011, 01, 25)));
-			Assert.That(trackChart.ToDate, Is.EqualTo(new DateTime(2011, 01, 31)));
 			Assert.That(trackChart.ChartItems.FirstOrDefault().Track, Is.Not.Null);
 		}
 	}

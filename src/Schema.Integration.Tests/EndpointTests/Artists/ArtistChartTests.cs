@@ -29,10 +29,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			Assert.That(artistChart, Is.Not.Null);
 			Assert.That(artistChart.ChartItems, Is.Not.Null);
 			Assert.That(artistChart.ChartItems.Count, Is.EqualTo(20));
-
 			Assert.That(artistChart.Type, Is.EqualTo(ChartType.artist));
-			Assert.That(artistChart.FromDate, Is.LessThanOrEqualTo(chartDate));
-			Assert.That(artistChart.ToDate, Is.GreaterThanOrEqualTo(chartDate));
 		}
 
 		[Test]
