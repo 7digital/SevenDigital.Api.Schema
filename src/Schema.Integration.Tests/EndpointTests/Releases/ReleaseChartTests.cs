@@ -25,8 +25,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<ReleaseChart>()
-				.WithParameter("fromDate", "20110101")
-				.WithParameter("toDate", "20110301")
 				.WithParameter("country", "GB");
 			var releaseChart = await request.Please();
 
@@ -39,8 +37,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Can_hit_endpoint_with_paging()
 		{
 			var request = _api.Create<ReleaseChart>()
-				.WithParameter("fromDate", "20090610")
-				.WithParameter("toDate", "20110101")
 				.WithParameter("page", "2")
 				.WithParameter("pageSize", "20");
 			var releaseChart = await request.Please();
