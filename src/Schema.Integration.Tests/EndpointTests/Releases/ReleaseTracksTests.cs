@@ -82,11 +82,11 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task can_determine_if_a_track_is_free()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(394123);
+				.ForReleaseId(2993739);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks, Is.Not.Null);
-			Assert.That(releaseTracks.Tracks.Count, Is.EqualTo(1));
+			Assert.That(releaseTracks.Tracks.Count, Is.EqualTo(66));
 
 			var track = releaseTracks.Tracks.First();
 			Assert.That(track, Is.Not.Null);
@@ -121,7 +121,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Tracks_have_subscription_streaming_when_requested()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(394123)
+				.ForReleaseId(5778840)
 				.WithParameter("usageTypes", "subscriptionStreaming");
 			var releaseTracks = await request.Please();
 
