@@ -46,7 +46,6 @@ namespace SevenDigital.Api.Schema.Releases
 		public string Image { get; set; }
 
 		[XmlElement("releaseDate")]
-		[Obsolete("Please use Download.ReleaseDate (if available) instead.")]
 		public DateTime? ReleaseDate { get; set; }
 
 		[XmlElement("addedDate")]
