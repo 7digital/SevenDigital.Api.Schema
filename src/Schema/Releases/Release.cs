@@ -46,7 +46,12 @@ namespace SevenDigital.Api.Schema.Releases
 		public string Image { get; set; }
 
 		[XmlElement("releaseDate")]
-		public DateTime? ReleaseDate { get; set; }
+		public DateTime? LegacyReleaseDate { get; set; }
+
+		[XmlIgnore]
+		public DateTime? ReleaseDate {
+			get { return Download != null ? Download.ReleaseDate : LegacyReleaseDate; }
+		}
 
 		[XmlElement("addedDate")]
 		public DateTime AddedDate { get; set; }
