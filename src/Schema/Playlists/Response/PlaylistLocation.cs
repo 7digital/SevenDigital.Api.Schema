@@ -26,7 +26,8 @@ namespace SevenDigital.Api.Schema.Playlists.Response
 		[XmlElement("status")]
 		public PlaylistStatusType Status { get; set; }
 
-		[XmlElement("tags")]
+		[XmlArray("tags")]
+		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
 
 		public override string ToString()
