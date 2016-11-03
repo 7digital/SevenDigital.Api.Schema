@@ -9,6 +9,9 @@ namespace SevenDigital.Api.Schema.Playlists
 		[XmlElement("name")]
 		public string Name { get; set; }
 
+		[XmlElement("playlistPosition")]
+		public int? PlaylistPosition { get; set; }
+
 		public Tag()
 		{
 		}
