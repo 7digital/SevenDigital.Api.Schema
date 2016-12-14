@@ -120,6 +120,7 @@
     <Compile Include="Playlists\Requests\PlaylistTracksRequest.cs" />
     <Compile Include="Playlists\Response\Endpoints\Playlist.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistDetails.cs" />
+    <Compile Include="Playlists\Response\Endpoints\PlaylistTags.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistTag.cs" />
     <Compile Include="Playlists\Response\Endpoints\TagsUpdate.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistTrack.cs" />
