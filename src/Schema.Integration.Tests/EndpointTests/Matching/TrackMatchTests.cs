@@ -6,6 +6,7 @@ using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
 using SevenDigital.Api.Schema.Matching;
 using SevenDigital.Api.Wrapper;
+using System.Diagnostics;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Matching
 {
@@ -45,6 +46,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Matching
 
 			var request = _api.Create<TrackMatchResponse>()
 				.WithParameter("mbIds", mbIds);
+
 			var apiResponse = await request.Please();
 
 			Assert.That(apiResponse.Tracks.Count, Is.EqualTo(2));

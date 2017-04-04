@@ -118,6 +118,7 @@
     <Compile Include="Playlists\Requests\PlaylistLocationRequest.cs" />
     <Compile Include="Playlists\Requests\PlaylistRequest.cs" />
     <Compile Include="Playlists\Requests\PlaylistTracksRequest.cs" />
+    <Compile Include="Playlists\Response\Endpoints\Annotation.cs" />
     <Compile Include="Playlists\Response\Endpoints\Playlist.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistDetails.cs" />
     <Compile Include="Playlists\Response\Endpoints\PlaylistTags.cs" />

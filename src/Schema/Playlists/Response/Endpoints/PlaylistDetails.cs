@@ -39,6 +39,10 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
 
+		[XmlArray("annotations")]
+		[XmlArrayItem("annotation")]
+		public List<Annotation> Annotations { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1}", Id, Name);
