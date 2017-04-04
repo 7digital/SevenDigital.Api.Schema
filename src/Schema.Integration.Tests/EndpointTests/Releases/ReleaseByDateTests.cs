@@ -23,6 +23,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<ReleaseByDate>()
+				.WithParameter("fromDate", DateTime.Now.AddDays(-7).ToString("yyyyMMdd"))
 				.WithParameter("toDate", DateTime.Now.ToString("yyyyMMdd"))
 				.WithParameter("country", "GB");
 			var release = await request.Please();
@@ -39,11 +40,12 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 				.WithParameter("toDate", "20140930")
 				.WithParameter("page", "2")
 				.WithParameter("pageSize", "20");
-			var artistBrowse = await request.Please();
+			var releaseByDate = await request.Please();
 
-			Assert.That(artistBrowse, Is.Not.Null);
-			Assert.That(artistBrowse.Page, Is.EqualTo(2));
-			Assert.That(artistBrowse.PageSize, Is.EqualTo(20));
+			Assert.That(releaseByDate, Is.Not.Null);
+			Assert.That(releaseByDate.Page, Is.EqualTo(2));
+			Assert.That(releaseByDate.PageSize, Is.EqualTo(20));
+			Assert.That(releaseByDate.Releases.Count, Is.GreaterThan(0));
 		}
 	}
 }
