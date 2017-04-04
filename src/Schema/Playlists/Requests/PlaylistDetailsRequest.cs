@@ -12,6 +12,7 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 		public PlaylistDetailsRequest()
 		{
 			Tags = new List<Tag>();
+			Annotations = new List<Annotation>();
 		}
 
 		[XmlElement("name")]

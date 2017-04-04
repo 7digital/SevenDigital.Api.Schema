@@ -9,28 +9,27 @@ using System.Diagnostics;
 
 namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 {
-	[TestFixture]
 	public class XmlSerializationTests
 	{
-
 		[Test]
 		public void Should_serialize_playlist_from_xml()
 		{
-			var xml = @"<response status=""ok"" version=""1.2"">
-  <playlist id=""51ed5cfec9021614f462bb7b"">
-    <name>party time</name>
-    <description>Hits to get the party started</description>
-    <status>Published</status>
-    <visibility>Public</visibility>
-    <image>http://artwork-cdn.7static.com/static/img/sleeveart/00/004/963/0000496338_$size$.jpg</image>
-    <tracks><track id=""524ae1a1c90216252c1837ab""><trackId>5495893</trackId><trackTitle>No You Girls</trackTitle></track></tracks>
-	<annotations>
-      <annotation key=""key"">value</annotation>
-      <annotation key=""anotherkey"">another value</annotation>
-    </annotations>
-    <lastUpdated>2013-10-02T12:16:04.615Z</lastUpdated>
-  </playlist>
-</response>";
+			const string xml = @"
+			<response status=""ok"" version=""1.2"">
+				<playlist id=""51ed5cfec9021614f462bb7b"">
+					<name>party time</name>
+					<description>Hits to get the party started</description>
+					<status>Published</status>
+					<visibility>Public</visibility>
+					<image>http://artwork-cdn.7static.com/static/img/sleeveart/00/004/963/0000496338_$size$.jpg</image>
+					<tracks><track id=""524ae1a1c90216252c1837ab""><trackId>5495893</trackId><trackTitle>No You Girls</trackTitle></track></tracks>
+					<annotations>
+					  <annotation key=""key"">value</annotation>
+					  <annotation key=""anotherkey"">another value</annotation>
+					</annotations>
+					<lastUpdated>2013-10-02T12:16:04.615Z</lastUpdated>
+				</playlist>
+			</response>";
 
 			var response = new Wrapper.Responses.Response(System.Net.HttpStatusCode.OK, xml);
 			var playlist = new ResponseDeserializer().DeserializeResponse<Playlist>(response, true);
@@ -52,7 +51,6 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 			Assert.That(playlist.Annotations.Count, Is.EqualTo(2));
 			Assert.That(playlist.Annotations[0].Key, Is.EqualTo("key"));
 			Assert.That(playlist.Annotations[0].Value, Is.EqualTo("value"));
-
 		}
 
 		[Test]
@@ -71,8 +69,8 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 				Visibility = PlaylistVisibilityType.Private,
 				Annotations = new List<Annotation>()
 				{
-					{ new Annotation("key", "value") },
-					{ new Annotation("another key", "another value") }
+					new Annotation("key", "value"),
+					new Annotation("another key", "another value")
 				}
 			};
 
@@ -80,7 +78,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 
 			Debug.WriteLine(xml);
 
-			var expectedXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+			const string expectedXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
 				"<playlist>" +
 				"<name>New Playlist</name>" +
 				"<visibility>Private</visibility>" +
@@ -94,5 +92,16 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 			Assert.That(xml, Is.EqualTo(expectedXml));
 		}
 
+		[Test]
+		public void Should_initialize_playlist_collections()
+		{
+			var details = new PlaylistDetails();
+			Assert.That(details.Tags, Is.EqualTo(new List<Tag>()));
+			Assert.That(details.Annotations, Is.EqualTo(new List<Annotation>()));
+
+			var detailsRequest = new PlaylistDetailsRequest();
+			Assert.That(detailsRequest.Tags, Is.EqualTo(new List<Tag>()));
+			Assert.That(detailsRequest.Annotations, Is.EqualTo(new List<Annotation>()));
+		}
 	}
 }

@@ -15,6 +15,7 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		public PlaylistDetails()
 		{
 			Tags = new List<Tag>();
+			Annotations = new List<Annotation>();
 		}
 
 		[XmlAttribute("id")]
