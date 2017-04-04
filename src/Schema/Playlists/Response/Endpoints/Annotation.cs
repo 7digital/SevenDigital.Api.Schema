@@ -7,6 +7,15 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 	[XmlRoot("annotation")]
 	public class Annotation
 	{
+		public Annotation()
+		{}
+
+		public Annotation(string key, string value)
+		{
+			Key = key;
+			Value = value;	
+		}
+
 		[XmlAttribute("key")]
 		public string Key {get; set; }
 

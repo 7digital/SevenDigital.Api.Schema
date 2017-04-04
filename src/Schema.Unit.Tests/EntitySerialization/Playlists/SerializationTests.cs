@@ -1,7 +1,11 @@
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Playlists;
+using SevenDigital.Api.Schema.Playlists.Requests;
 using SevenDigital.Api.Schema.Playlists.Response.Endpoints;
+using SevenDigital.Api.Wrapper.Requests.Serializing;
 using SevenDigital.Api.Wrapper.Responses.Parsing;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 {
@@ -52,6 +56,43 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 		}
 
 		[Test]
+		public void Should_deserialize_from_playlist_request()
+		{
+			var playlistRequest = new PlaylistDetailsRequest()
+			{
+				Description = "A New Playlist Description",
+				ImageUrl = "an-image-url",
+				Name = "New Playlist",
+				Status = PlaylistStatusType.Published,
+				Tags = new List<Tag>()
+				{
+					new Tag { Name="Tag", PlaylistPosition=1 }
+				},
+				Visibility = PlaylistVisibilityType.Private,
+				Annotations = new List<Annotation>()
+				{
+					{ new Annotation("key", "value") },
+					{ new Annotation("another key", "another value") }
+				}
+			};
+
+			var xml = new XmlPayloadSerializer().Serialize(playlistRequest);
+
+			Debug.WriteLine(xml);
+
+			var expectedXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+				"<playlist>" +
+				"<name>New Playlist</name>" +
+				"<visibility>Private</visibility>" +
+				"<status>Published</status>" +
+				"<description>A New Playlist Description</description>" +
+				"<image>an-image-url</image>" +
+				"<tags><tag><name>Tag</name><playlistPosition>1</playlistPosition></tag></tags>" +
+				"<annotations><annotation key=\"key\">value</annotation><annotation key=\"another key\">another value</annotation></annotations>" +
+				"</playlist>";
+
+			Assert.That(xml, Is.EqualTo(expectedXml));
+		}
 
 	}
 }

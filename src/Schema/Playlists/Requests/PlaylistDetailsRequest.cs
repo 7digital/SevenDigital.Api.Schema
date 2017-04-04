@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SevenDigital.Api.Schema.Playlists.Response.Endpoints;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -31,5 +32,9 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 		[XmlArray("tags")]
 		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
+
+		[XmlArray("annotations")]
+		[XmlArrayItem("annotation")]
+		public List<Annotation> Annotations { get; set; }
 	}
 }
