@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.OAuth;
 
@@ -42,6 +43,7 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 
 		[XmlArray("annotations")]
 		[XmlArrayItem("annotation")]
+		[JsonConverter(typeof(AnnotationsJsonConverter))]
 		public List<Annotation> Annotations { get; set; }
 
 		public override string ToString()

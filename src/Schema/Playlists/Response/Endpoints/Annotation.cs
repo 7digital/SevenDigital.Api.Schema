@@ -13,7 +13,7 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		public Annotation(string key, string value)
 		{
 			Key = key;
-			Value = value;	
+			Value = value;
 		}
 
 		[XmlAttribute("key")]

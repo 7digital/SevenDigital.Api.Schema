@@ -8,7 +8,8 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 	[XmlRoot("playlist")]
 	public class PlaylistRequest : PlaylistDetailsRequest
 	{
-		[XmlElement("tracks")]
+		[XmlArray("tracks")]
+		[XmlArrayItem("track")]
 		public List<Product> Tracks { get; set; }
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace SevenDigital.Api.Schema.Playlists
 {
@@ -7,42 +9,55 @@ namespace SevenDigital.Api.Schema.Playlists
 	public class Product
 	{
 		[XmlElement("trackId")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string TrackId { get; set; }
 
-		[XmlElement("trackTitle", IsNullable = true)]
+		[XmlElement("trackTitle")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string TrackTitle { get; set; }
 
-		[XmlElement("trackVersion", IsNullable = true)]
+		[XmlElement("trackVersion")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string TrackVersion { get; set; }
 
-		[XmlElement("artistId", IsNullable = true)]
+		[XmlElement("artistId")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ArtistId { get; set; }
 
 		[XmlElement("artistAppearsAs")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ArtistAppearsAs { get; set; }
 
-		[XmlElement("releaseId", IsNullable = true)]
+		[XmlElement("releaseId")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ReleaseId { get; set; }
 
-		[XmlElement("releaseTitle", IsNullable = true)]
+		[XmlElement("releaseTitle")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ReleaseTitle { get; set; }
 
-		[XmlElement("releaseArtistId", IsNullable = true)]
+		[XmlElement("releaseArtistId")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ReleaseArtistId { get; set; }
 
-		[XmlElement("releaseArtistAppearsAs", IsNullable = true)]
+		[XmlElement("releaseArtistAppearsAs")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ReleaseArtistAppearsAs { get; set; }
 
-		[XmlElement("releaseVersion", IsNullable = true)]
+		[XmlElement("releaseVersion")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ReleaseVersion { get; set; }
 
-		[XmlElement("source", IsNullable = true)]
+		[XmlElement("source")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string Source { get; set; }
 
-		[XmlElement("audioUrl", IsNullable = true)]
+		[XmlElement("audioUrl")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string AudioUrl { get; set; }
 
-		[XmlElement("image", IsNullable = true)]
+		[XmlElement("image")]
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public string ImageUrl { get; set; }
 	}
 }
