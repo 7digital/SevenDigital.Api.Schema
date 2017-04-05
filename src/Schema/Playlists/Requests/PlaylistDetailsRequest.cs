@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace SevenDigital.Api.Schema.Playlists.Requests
 {
@@ -36,6 +37,7 @@ namespace SevenDigital.Api.Schema.Playlists.Requests
 
 		[XmlArray("annotations")]
 		[XmlArrayItem("annotation")]
+		[JsonConverter(typeof(AnnotationsJsonConverter))]
 		public List<Annotation> Annotations { get; set; }
 	}
 }
