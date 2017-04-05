@@ -56,13 +56,17 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 		[Test]
 		public void Should_deserialize_from_playlist_request()
 		{
-			var playlistRequest = new PlaylistDetailsRequest()
+			var playlistRequest = new PlaylistRequest
 			{
 				Description = "A New Playlist Description",
 				ImageUrl = "an-image-url",
 				Name = "New Playlist",
+				Tracks = new List<Product> {
+					new Product { TrackId = "12345" },
+					new Product { TrackId = "98765"}
+				},
 				Status = PlaylistStatusType.Published,
-				Tags = new List<Tag>()
+				Tags = new List<Tag>
 				{
 					new Tag { Name="Tag", PlaylistPosition=1 }
 				},
@@ -87,6 +91,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 				"<image>an-image-url</image>" +
 				"<tags><tag><name>Tag</name><playlistPosition>1</playlistPosition></tag></tags>" +
 				"<annotations><annotation key=\"key\">value</annotation><annotation key=\"another key\">another value</annotation></annotations>" +
+				"<tracks><track><trackId>12345</trackId></track><track><trackId>98765</trackId></track></tracks>" +
 				"</playlist>";
 
 			Assert.That(xml, Is.EqualTo(expectedXml));

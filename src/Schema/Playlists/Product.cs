@@ -9,40 +9,40 @@ namespace SevenDigital.Api.Schema.Playlists
 		[XmlElement("trackId")]
 		public string TrackId { get; set; }
 
-		[XmlElement("trackTitle", IsNullable = true)]
+		[XmlElement("trackTitle")]
 		public string TrackTitle { get; set; }
 
-		[XmlElement("trackVersion", IsNullable = true)]
+		[XmlElement("trackVersion")]
 		public string TrackVersion { get; set; }
 
-		[XmlElement("artistId", IsNullable = true)]
+		[XmlElement("artistId")]
 		public string ArtistId { get; set; }
 
 		[XmlElement("artistAppearsAs")]
 		public string ArtistAppearsAs { get; set; }
 
-		[XmlElement("releaseId", IsNullable = true)]
+		[XmlElement("releaseId")]
 		public string ReleaseId { get; set; }
 
-		[XmlElement("releaseTitle", IsNullable = true)]
+		[XmlElement("releaseTitle")]
 		public string ReleaseTitle { get; set; }
 
-		[XmlElement("releaseArtistId", IsNullable = true)]
+		[XmlElement("releaseArtistId")]
 		public string ReleaseArtistId { get; set; }
 
-		[XmlElement("releaseArtistAppearsAs", IsNullable = true)]
+		[XmlElement("releaseArtistAppearsAs")]
 		public string ReleaseArtistAppearsAs { get; set; }
 
-		[XmlElement("releaseVersion", IsNullable = true)]
+		[XmlElement("releaseVersion")]
 		public string ReleaseVersion { get; set; }
 
-		[XmlElement("source", IsNullable = true)]
+		[XmlElement("source")]
 		public string Source { get; set; }
 
-		[XmlElement("audioUrl", IsNullable = true)]
+		[XmlElement("audioUrl")]
 		public string AudioUrl { get; set; }
 
-		[XmlElement("image", IsNullable = true)]
+		[XmlElement("image")]
 		public string ImageUrl { get; set; }
 	}
 }
