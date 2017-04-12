@@ -6,5 +6,8 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 	{
 		[XmlElement("name")]
 		public string Name { get; set; }
+
+		[XmlElement("hidden")]
+		public bool Hidden { get; set; }
 	}
 }
