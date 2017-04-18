@@ -82,7 +82,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(package.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
 
-
 		[Test]
 		public async Task Release_has_download_package_price()
 		{

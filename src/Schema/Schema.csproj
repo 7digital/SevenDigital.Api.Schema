@@ -76,15 +76,13 @@
     <Compile Include="Matching\MatchError.cs" />
     <Compile Include="Matching\ReleaseMatchResponse.cs" />
     <Compile Include="Matching\TrackMatchResponse.cs" />
-    <Compile Include="Media\Format.cs" />
-    <Compile Include="Media\FormatList.cs" />
     <Compile Include="Merchandising\ListItem.cs" />
     <Compile Include="Merchandising\MerchandisingList.cs" />
     <Compile Include="OAuth\OAuthAccessToken.cs" />
     <Compile Include="OAuth\OAuthRequestToken.cs" />
     <Compile Include="OAuth\OAuthSignedAttribute.cs" />
     <Compile Include="Packages\Package.cs" />
-    <Compile Include="Packages\PackageFormat.cs" />
+    <Compile Include="Media\Format.cs" />
     <Compile Include="Packages\Download.cs" />
     <Compile Include="Packages\PackagePrice.cs" />
     <Compile Include="Packages\Streaming.cs" />
