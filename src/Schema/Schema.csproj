@@ -139,8 +139,6 @@
     <Compile Include="Pricing\PriceStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecommendedItem.cs" />
-    <Compile Include="Legacy\PriceLegacyMapper.cs" />
-    <Compile Include="Legacy\FormatLegacyMapper.cs" />
     <Compile Include="Releases\Release.cs" />
     <Compile Include="Releases\ReleaseByDate.cs" />
     <Compile Include="Releases\ReleaseChart.cs" />
@@ -200,5 +198,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
