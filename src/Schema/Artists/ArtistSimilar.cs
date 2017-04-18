@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Artists
 	[Serializable]
 	[ApiEndpoint("artist/similar")]
 	[XmlRoot("artists")]
-	public class ArtistSimilar : HasPaging, HasArtistIdParameter
+	public class ArtistSimilar : HasPaging, HasArtistIdParameter, HasUsageTypesParameter
 	{
 		[XmlElement("artist")]
 		public List<Artist> Artists { get; set; }

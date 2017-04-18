@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Releases
 	[Serializable]
 	[ApiEndpoint("release/search")]
 	[XmlRoot("searchResults")]
-	public class ReleaseSearch : HasPaging, HasSearchParameter
+	public class ReleaseSearch : HasPaging, HasSearchParameter, HasUsageTypesParameter
 	{
 		public ReleaseSearch()
 		{

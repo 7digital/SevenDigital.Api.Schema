@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Artists
 	[Serializable]
 	[ApiEndpoint("artist/search")]
 	[XmlRoot("searchResults")]
-	public class ArtistSearch : HasPaging, HasSearchParameter
+	public class ArtistSearch : HasPaging, HasSearchParameter, HasUsageTypesParameter
 	{
 		public ArtistSearch()
 		{

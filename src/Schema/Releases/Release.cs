@@ -10,7 +10,7 @@ namespace SevenDigital.Api.Schema.Releases
 	[Serializable]
 	[XmlRoot("release")]
 	[ApiEndpoint("release/details")]
-	public class Release : HasReleaseIdParameter
+	public class Release : HasReleaseIdParameter, HasUsageTypesParameter
 	{
 		[XmlAttribute("id")]
 		public int Id { get; set; }

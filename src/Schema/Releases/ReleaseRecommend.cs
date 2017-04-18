@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Releases
 	[Serializable]
 	[ApiEndpoint("release/recommend")]
 	[XmlRoot("recommendations")]
-	public class ReleaseRecommend : HasPaging, HasReleaseIdParameter
+	public class ReleaseRecommend : HasPaging, HasReleaseIdParameter, HasUsageTypesParameter
 	{
 		[XmlElement("recommendedItem")]
 		public List<RecommendedItem> RecommendedItems { get; set; }

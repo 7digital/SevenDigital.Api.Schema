@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
 using SevenDigital.Api.Schema.Charts;
+using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Releases
 {
 	[Serializable]
 	[ApiEndpoint("release/chart")]
 	[XmlRoot("chart")]
-	public class ReleaseChart : HasPaging, IChart<ReleaseChartItem>
+	public class ReleaseChart : HasPaging, IChart<ReleaseChartItem>, HasUsageTypesParameter
 	{
 		[XmlElement("type")]
 		public ChartType Type { get; set; }

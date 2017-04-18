@@ -102,6 +102,7 @@
     <Compile Include="ParameterDefinitions\Get\HasReleaseTypeParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasSearchParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasTags.cs" />
+    <Compile Include="ParameterDefinitions\Get\HasUsageTypesParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasTrackIdParameter.cs" />
     <Compile Include="ParameterDefinitions\Get\HasUserDeliverItemParameter.cs" />
     <Compile Include="ParameterDefinitions\Post\AddCardParameters.cs" />

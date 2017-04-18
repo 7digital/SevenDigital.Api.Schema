@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Tags
 	[Serializable]
 	[ApiEndpoint("release/bytag/top")]
 	[XmlRoot("taggedResults")]
-	public class ReleaseByTagTop : HasPaging , HasTags
+	public class ReleaseByTagTop : HasPaging , HasTags, HasUsageTypesParameter
 	{
 		[XmlElement("type")]
 		public ItemType Type { get; set; }
