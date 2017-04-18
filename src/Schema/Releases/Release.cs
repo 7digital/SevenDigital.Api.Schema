@@ -2,11 +2,8 @@
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Artists;
 using SevenDigital.Api.Schema.Attributes;
-using SevenDigital.Api.Schema.Legacy;
-using SevenDigital.Api.Schema.Media;
 using SevenDigital.Api.Schema.Packages;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
-using SevenDigital.Api.Schema.Pricing;
 
 namespace SevenDigital.Api.Schema.Releases
 {
@@ -39,46 +36,14 @@ namespace SevenDigital.Api.Schema.Releases
 		[XmlElement("artist")]
 		public Artist Artist { get; set; }
 
-		[XmlElement("url")]
-		public string Url { get; set; }
-
 		[XmlElement("image")]
 		public string Image { get; set; }
-
-		[Obsolete]
-		public DateTime? ReleaseDate 
-		{
-			get
-			{
-				if (Download == null)
-				{
-					return null;
-				}
-
-				return Download.ReleaseDate;
-			} 
-		}
-
-		[XmlElement("addedDate")]
-		public DateTime AddedDate { get; set; }
-		
-		[XmlIgnore]
-		public bool AddedDateSpecified { get { return AddedDate > DateTime.MinValue; } }
-
-		[Obsolete]
-		public Price Price { get { return PriceLegacyMapper.PrimaryPackagePrice(Download); } }
-
-		[Obsolete]
-		public FormatList Formats { get { return FormatLegacyMapper.PrimaryPackageFormats(Download); } }
 
 		[XmlElement("label")]
 		public Label Label { get; set; }
 
 		[XmlElement("licensor")]
 		public Licensor Licensor { get; set; }
-
-		[XmlElement("streamingReleaseDate")]
-		public DateTime? StreamingReleaseDate { get; set; }
 
 		[XmlElement("duration")]
 		public int Duration { get; set; }
