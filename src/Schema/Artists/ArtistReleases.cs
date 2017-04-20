@@ -10,7 +10,7 @@ namespace SevenDigital.Api.Schema.Artists
 	[Serializable]
 	[ApiEndpoint("artist/releases")]
 	[XmlRoot("releases")]
-	public class ArtistReleases : HasPaging, HasArtistIdParameter, HasReleaseTypeParameter
+	public class ArtistReleases : HasPaging, HasArtistIdParameter, HasReleaseTypeParameter, HasUsageTypesParameter
 	{
 		[XmlElement("release")]
 		public List<Release> Releases { get; set; }

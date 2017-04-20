@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndpointTests\Lockers\LockerTests.cs" />
     <Compile Include="EndpointTests\Matching\ArtistMatchTests.cs" />
     <Compile Include="EndpointTests\Matching\ReleaseMatchTests.cs" />
     <Compile Include="EndpointTests\Matching\TrackMatchTests.cs" />

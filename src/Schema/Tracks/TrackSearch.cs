@@ -9,7 +9,7 @@ namespace SevenDigital.Api.Schema.Tracks
 	[Serializable]
 	[XmlRoot("searchResults")]
 	[ApiEndpoint("track/search")]
-	public class TrackSearch : HasPaging, HasSearchParameter
+	public class TrackSearch : HasPaging, HasSearchParameter, HasUsageTypesParameter
 	{
 		public TrackSearch()
 		{

@@ -36,7 +36,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 
 			Assert.That(release, Is.Not.Null);
 			Assert.That(release.TrackCount, Is.EqualTo(12));
-			Assert.That(release.StreamingReleaseDate, Is.Not.Null);
+			Assert.That(release.SubscriptionStreaming.ReleaseDate, Is.Not.Null);
 			Assert.That(release.Duration, Is.EqualTo(2716));
 		}
 
@@ -81,7 +81,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(package.Formats[0].Id, Is.EqualTo((17)));
 			Assert.That(package.Formats[0].Description, Is.EqualTo("MP3 320"));
 		}
-
 
 		[Test]
 		public async Task Release_has_download_package_price()
@@ -142,6 +141,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<Release>()
 				.ForReleaseId(1685647)
+				.WithParameter("usageTypes", "download,subscriptionStreaming")
 				.WithParameter("country", "GB");
 
 			return await request.Please();

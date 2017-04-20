@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using SevenDigital.Api.Schema.Media;
 
 namespace SevenDigital.Api.Schema.Packages
 {
@@ -18,7 +19,7 @@ namespace SevenDigital.Api.Schema.Packages
 
 		[XmlArray("formats")]
 		[XmlArrayItem("format")]
-		public List<PackageFormat> Formats { get; set; }
+		public List<Format> Formats { get; set; }
 
 		public override string ToString()
 		{

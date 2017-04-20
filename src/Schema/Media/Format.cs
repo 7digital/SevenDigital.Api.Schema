@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Xml.Serialization;
 
 namespace SevenDigital.Api.Schema.Media
@@ -9,18 +9,12 @@ namespace SevenDigital.Api.Schema.Media
 		[XmlAttribute("id")]
 		public int Id { get; set; }
 
-		[XmlElement("fileFormat")]
-		public string FileFormat { get; set; }
-
-		[XmlElement("bitRate")]
-		public string BitRate { get; set; }
-
-		[XmlElement("drmFree")]
-		public bool DrmFree { get; set; }
+		[XmlElement("description")]
+		public string Description { get; set; }
 
 		public override string ToString()
 		{
-			return string.Format("{0}: {1} {2}", Id, FileFormat, BitRate);
+			return string.Format("{0}: {1}", Id, Description);
 		}
 	}
 }
