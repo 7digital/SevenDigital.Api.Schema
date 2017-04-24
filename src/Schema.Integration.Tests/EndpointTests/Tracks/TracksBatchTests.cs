@@ -117,7 +117,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.WithParameter("usageTypes", "subscriptionStreaming")
+				.ForUsageTypes(UsageType.SubscriptionStreaming)
 				.ForShop(34);
 
 			var response = await request.Please();
@@ -134,7 +134,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.WithParameter("usageTypes", "download")
+				.ForUsageTypes(UsageType.Download)
 				.ForShop(34);
 
 			var response = await request.Please();
@@ -151,7 +151,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.WithParameter("usageTypes", "download,subscriptionStreaming")
+				.ForUsageTypes(UsageType.SubscriptionStreaming, UsageType.Download)
 				.ForShop(34);
 
 			var response = await request.Please();
