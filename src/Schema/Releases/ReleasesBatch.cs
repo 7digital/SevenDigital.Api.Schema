@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
+using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Releases
 {
 	[Serializable]
 	[ApiEndpoint("release/details/batch")]
 	[XmlRoot("items")]
-	public class ReleasesBatch
+	public class ReleasesBatch : HasUsageTypesParameter
 	{
 		[XmlArray("releases")]
 		[XmlArrayItem("release")]

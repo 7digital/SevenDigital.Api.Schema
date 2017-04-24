@@ -100,7 +100,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<Release>()
 				.ForReleaseId(1685647)
 				.WithParameter("country", "GB")
-				.WithParameter("usageTypes", "subscriptionStreaming");
+				.ForUsageTypes(UsageType.SubscriptionStreaming);
 
 			var release = await request.Please();
 
@@ -114,7 +114,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<Release>()
 				.ForReleaseId(12345)
 				.WithParameter("country", "GB")
-				.WithParameter("usageTypes", "download");
+				.ForUsageTypes(UsageType.Download);
 
 			var release = await request.Please();
 
@@ -130,7 +130,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<Release>()
 			.ForReleaseId(12345)
 			.WithParameter("country", "GB")
-			.WithParameter("usageTypes", "download,subscriptionStreaming");
+			.ForUsageTypes(UsageType.Download, UsageType.SubscriptionStreaming);
 
 			var release = await request.Please();
 			Assert.That(release.Slug, Is.Not.Null);
@@ -141,7 +141,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<Release>()
 				.ForReleaseId(1685647)
-				.WithParameter("usageTypes", "download,subscriptionStreaming")
+				.ForUsageTypes(UsageType.Download, UsageType.SubscriptionStreaming)
 				.WithParameter("country", "GB");
 
 			return await request.Please();

@@ -122,7 +122,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(5778840)
-				.WithParameter("usageTypes", "subscriptionStreaming");
+				.ForUsageTypes(UsageType.SubscriptionStreaming);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
@@ -135,7 +135,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(1996067)
-				.WithParameter("usageTypes", "download");
+				.ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
@@ -148,7 +148,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseTracks>()
 				.ForReleaseId(1996067)
-				.WithParameter("usageTypes", "download,subscriptionStreaming");
+				.ForUsageTypes(UsageType.Download, UsageType.SubscriptionStreaming);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));

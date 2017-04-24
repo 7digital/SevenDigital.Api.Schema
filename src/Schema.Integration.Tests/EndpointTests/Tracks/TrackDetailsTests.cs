@@ -123,7 +123,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		{
 			var request = _api.Create<Track>()
 				.ForTrackId(12345)
-				.WithParameter("usageTypes", "subscriptionStreaming");
+				.ForUsageTypes(UsageType.SubscriptionStreaming);
 			var track = await request.Please();
 			Assert.That(track.SubscriptionStreaming, Is.Not.Null);
 			Assert.That(track.SubscriptionStreaming.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
@@ -134,7 +134,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		{
 			var request = _api.Create<Track>()
 				.ForTrackId(12345)
-				.WithParameter("usageTypes", "download");
+				.ForUsageTypes(UsageType.Download);
 			var track = await request.Please();
 			Assert.That(track.Download, Is.Not.Null);
 			Assert.That(track.Download.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
@@ -147,7 +147,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		{
 			var request = _api.Create<Track>()
 				.ForTrackId(12345)
-				.WithParameter("usageTypes", "download,subscriptionStreaming");
+				.ForUsageTypes(UsageType.SubscriptionStreaming, UsageType.Download);
 			var track = await request.Please();
 			Assert.That(track.Artist.Slug, Is.Not.Null);
 			Assert.That(track.Release.Slug, Is.Not.Null);

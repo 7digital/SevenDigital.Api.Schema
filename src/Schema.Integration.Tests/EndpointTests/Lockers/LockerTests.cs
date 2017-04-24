@@ -28,7 +28,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Lockers
 			_api.Create<Locker>()
 				.ForUser(TestDataFromEnvironmentOrAppSettings.AccessToken, TestDataFromEnvironmentOrAppSettings.AccessTokenSecret)
 				.WithParameter("country", "GB")
-				.WithParameter("usageTypes", "download");
+				.ForUsageTypes(UsageType.Download);
 			var locker = await request.Please();
 			Assert.That(locker, Is.Not.Null);
 			_availableRelease = locker.Response.LockerReleases.First(o => o.Available);

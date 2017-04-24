@@ -118,7 +118,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { FirstId };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.WithParameter("usageTypes", "subscriptionStreaming")
+				.ForUsageTypes(UsageType.SubscriptionStreaming)
 				.ForShop(34);
 
 
@@ -141,7 +141,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.WithParameter("usageTypes", "download")
+				.ForUsageTypes(UsageType.Download)
 				.ForShop(34);
 
 
@@ -166,7 +166,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.WithParameter("usageTypes", "download,subscriptionStreaming")
+				.ForUsageTypes(UsageType.Download, UsageType.SubscriptionStreaming)
 				.ForShop(34);
 
 			var response = await request.Please();
