@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SevenDigital.Api.Schema.Playlists.Response.Endpoints;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -35,6 +37,11 @@ namespace SevenDigital.Api.Schema.Playlists.Response
 		[XmlArray("tags")]
 		[XmlArrayItem("tag")]
 		public List<Tag> Tags { get; set; }
+
+		[XmlArray("annotations")]
+		[XmlArrayItem("annotation")]
+		[JsonConverter(typeof(AnnotationsJsonConverter))]
+		public List<Annotation> Annotations { get; set; }
 
 		public override string ToString()
 		{

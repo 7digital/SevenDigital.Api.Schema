@@ -107,7 +107,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 		}
 
 		[Test]
-		public void Should_serialize_to_xml_playlist_request()
+		public void Should_serialize_playlist_request_to_xml()
 		{
 			var playlistRequest = new PlaylistRequest
 			{
@@ -125,7 +125,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 					new Tag { Name = "tag2" }
 				},
 				Visibility = PlaylistVisibilityType.Private,
-				Annotations = new List<Annotation>()
+				Annotations = new List<Annotation>
 				{
 					new Annotation("key", "value"),
 					new Annotation("another key", "another value")
@@ -152,7 +152,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 		}
 
 		[Test]
-		public void Should_serialize_to_json_playlist_request()
+		public void Should_serialize_playlist_request_to_json()
 		{
 			var playlistRequest = new PlaylistRequest
 			{
@@ -167,7 +167,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 				Tags = new List<Tag>
 				{
 					new Tag { Name="tag1", PlaylistPosition=1 },
-					new Tag { Name="tag2" },
+					new Tag { Name="tag2" }
 				},
 				Visibility = PlaylistVisibilityType.Private,
 				Annotations = new List<Annotation>
