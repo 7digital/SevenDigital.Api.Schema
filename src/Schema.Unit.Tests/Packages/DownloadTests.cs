@@ -8,7 +8,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Packages
 	public class PackagesTests
 	{
 		[Test]
-		public void ShouldHaveNoPrimaryPackageWhenThereAreNoPackages()
+		public void Should_have_no_primary_package_when_there_are_no_packages()
 		{
 			var download = new Download();
 
@@ -18,7 +18,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Packages
 		}
 
 		[Test]
-		public void ShouldHavePrimaryPackageWhenThereIsOnePackage()
+		public void Should_have_primary_package_when_there_is_one_package()
 		{
 			var download = new Download
 			{
@@ -35,7 +35,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Packages
 		}
 
 		[Test]
-		public void ShouldPickStandardPackageIfPresent()
+		public void Should_pick_standard_package_if_present()
 		{
 			var download = new Download
 			{
@@ -55,7 +55,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.Packages
 		}
 
 		[Test]
-		public void ShouldFallBackToFirstPackage()
+		public void Should_fall_back_to_first_package()
 		{
 			var download = new Download
 			{
