@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Attributes;
-using SevenDigital.Api.Schema.Lockers;
+using SevenDigital.Api.Schema.Purchasing;
 using SevenDigital.Api.Schema.OAuth;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 

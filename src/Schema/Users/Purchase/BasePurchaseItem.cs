@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using SevenDigital.Api.Schema.Lockers;
+using SevenDigital.Api.Schema.Purchasing;
 using SevenDigital.Api.Schema.ParameterDefinitions.Get;
 
 namespace SevenDigital.Api.Schema.Users.Purchase

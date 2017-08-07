@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using SevenDigital.Api.Schema.Artists;
-using SevenDigital.Api.Schema.Lockers;
-using SevenDigital.Api.Schema.Media;
 using SevenDigital.Api.Schema.Releases;
 using SevenDigital.Api.Schema.Tracks;
 
