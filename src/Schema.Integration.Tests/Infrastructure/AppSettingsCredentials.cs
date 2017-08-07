@@ -3,7 +3,18 @@ using SevenDigital.Api.Wrapper;
 
 namespace SevenDigital.Api.Schema.Integration.Tests.Infrastructure
 {
-	public class AppSettingsCredentials : IOAuthCredentials
+	public abstract class AppSettingsCredentialsBase : IOAuthCredentials
+	{
+		public abstract string ConsumerKey { get; protected set; }
+		public abstract string ConsumerSecret { get; protected set; }
+
+		protected static string ValueFromEnvOrConfig(string envName, string configName)
+		{
+			return System.Environment.GetEnvironmentVariable(envName) ?? ConfigurationManager.AppSettings[configName];
+		}
+	}
+
+	public sealed class AppSettingsCredentials : AppSettingsCredentialsBase
 	{
 		public AppSettingsCredentials()
 		{
@@ -11,12 +22,23 @@ namespace SevenDigital.Api.Schema.Integration.Tests.Infrastructure
 			ConsumerSecret = ValueFromEnvOrConfig("WRAPPER_INTEGRATION_TEST_CONSUMER_SECRET", "Wrapper.ConsumerSecret");
 		}
 
-		public string ConsumerKey { get; private set; }
-		public string ConsumerSecret { get; private set; }
+		public override string ConsumerKey { get; protected set; }
+		public override string ConsumerSecret { get; protected set; }
+	}
 
-		private static string ValueFromEnvOrConfig(string envName, string configName)
+	public sealed class PurchasingAppSettingsCredentials : AppSettingsCredentialsBase
+	{
+		public PurchasingAppSettingsCredentials()
 		{
-			return System.Environment.GetEnvironmentVariable(envName) ?? ConfigurationManager.AppSettings[configName];
+			ConsumerKey = ValueFromEnvOrConfig(
+				"WRAPPER_PURCHASING_INTEGRATION_TEST_CONSUMER_KEY",
+				"Wrapper.Purchasing.ConsumerKey");
+			ConsumerSecret = ValueFromEnvOrConfig(
+				"WRAPPER_PURCHASING_INTEGRATION_TEST_CONSUMER_SECRET",
+				"Wrapper.Purchasing.ConsumerSecret");
 		}
+
+		public override string ConsumerKey { get; protected set; }
+		public override string ConsumerSecret { get; protected set; }
 	}
 }

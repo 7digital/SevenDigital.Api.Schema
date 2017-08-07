@@ -6,9 +6,11 @@ namespace SevenDigital.Api.Schema.Integration.Tests.Infrastructure
 	{
 		private readonly ApiFactory _apiFactory;
 
-		public ApiConnection()
+		public ApiConnection() : this(new AppSettingsCredentials()) {}
+
+		public ApiConnection(IOAuthCredentials appSettingsCredentials)
 		{
-			_apiFactory = new ApiFactory(new ApiUri(), new AppSettingsCredentials());
+			_apiFactory = new ApiFactory(new ApiUri(), appSettingsCredentials);
 		}
 
 		public IFluentApi<T> Create<T>() where T : class, new()

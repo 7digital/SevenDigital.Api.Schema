@@ -57,6 +57,7 @@
     <Compile Include="EndpointTests\Matching\ArtistMatchTests.cs" />
     <Compile Include="EndpointTests\Matching\ReleaseMatchTests.cs" />
     <Compile Include="EndpointTests\Matching\TrackMatchTests.cs" />
+    <Compile Include="EndpointTests\Purchasing\PurchasingTests.cs" />
     <Compile Include="EndpointTests\Releases\ReleasesBatchTests.cs" />
     <Compile Include="EndpointTests\Tracks\TracksBatchTests.cs" />
     <Compile Include="Infrastructure\ApiConnection.cs" />
