@@ -50,6 +50,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Purchasing
 		{
 			Assert.That(_lockerRelease.Release.Url, Is.Not.Null.And.Not.Empty);
 			Assert.That(_lockerRelease.Release.Artist.Url, Is.Not.Null.And.Not.Empty);
+			Assert.That(_lockerRelease.LockerTracks.First().Track.Url, Is.Not.Null.And.Not.Empty);
+			Assert.That(_lockerRelease.LockerTracks.First().Track.Artist.Url, Is.Not.Null.And.Not.Empty);
 		}
 
 		[Test]

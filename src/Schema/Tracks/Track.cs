@@ -28,7 +28,7 @@ namespace SevenDigital.Api.Schema.Tracks
 		/// <summary>
 		/// Track number or in cases where disc number is greater than 1, it is the discNumber + trackNumber (ie 203)
 		/// </summary>
-		/// <remarks>Will soon de decommisioned</remarks>
+		/// <remarks>Will soon be decommissioned</remarks>
 		[XmlElement("trackNumber")]
 		public int TrackNumber { get; set; }
 
