@@ -13,8 +13,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 	{
 		private readonly IApi _api = new ApiConnection();
 
-		private const int FirstId = 12345;
-		private const int SecondId = 12346;
+		private const int FirstId = 125996;
+		private const int SecondId = 125997;
 
 		[Test]
 		public async Task Should_return_tracks_from_api()
@@ -126,6 +126,23 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var subscriptionStreaming = response.Tracks.Select(t => t.SubscriptionStreaming).ToList();
 			Assert.That(subscriptionStreaming.Count, Is.EqualTo(2));
 			Assert.That(subscriptionStreaming, Is.All.Not.Null);
+		}
+
+		[Test]
+		public async Task Tracks_have_ad_supported_streaming_when_requested()
+		{
+			var ids = new List<int> { FirstId, SecondId };
+			var request = _api.Create<TracksBatch>()
+							  .WithParameter("trackids", ids)
+							  .ForUsageTypes(UsageType.AdSupportedStreaming)
+							  .ForShop(34);
+
+			var response = await request.Please();
+
+			Assert.That(response.Tracks.Count, Is.EqualTo(2));
+			var adSupportedStreaming = response.Tracks.Select(t => t.AdSupportedStreaming).ToList();
+			Assert.That(adSupportedStreaming.Count, Is.EqualTo(2));
+			Assert.That(adSupportedStreaming, Is.All.Not.Null);
 		}
 
 		[Test]

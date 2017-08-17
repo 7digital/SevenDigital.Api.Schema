@@ -66,6 +66,9 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("subscriptionStreaming")]
 		public Streaming SubscriptionStreaming { get; set; }
 
+		[XmlElement("adSupportedStreaming")]
+		public Streaming AdSupportedStreaming { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1} {2} {3}, ISRC: {4}", Id, Title, Version, Type, Isrc);

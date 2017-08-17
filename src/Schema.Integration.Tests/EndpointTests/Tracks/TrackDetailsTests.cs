@@ -130,6 +130,17 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		}
 
 		[Test]
+		public async Task Track_has_ad_supported_streaming_when_requested()
+		{
+			var request = _api.Create<Track>()
+							  .ForTrackId(125996)
+							  .ForUsageTypes(UsageType.AdSupportedStreaming);
+			var track = await request.Please();
+			Assert.That(track.AdSupportedStreaming, Is.Not.Null);
+			Assert.That(track.AdSupportedStreaming.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
 		public async Task Track_has_download_when_requested()
 		{
 			var request = _api.Create<Track>()

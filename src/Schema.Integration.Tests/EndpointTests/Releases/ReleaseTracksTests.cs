@@ -131,6 +131,19 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		}
 
 		[Test]
+		public async Task Tracks_have_ad_supported_streaming_when_requested()
+		{
+			var request = _api.Create<ReleaseTracks>()
+							  .ForReleaseId(12345)
+							  .ForUsageTypes(UsageType.AdSupportedStreaming);
+			var releaseTracks = await request.Please();
+
+			Assert.That(releaseTracks.Tracks.Count, Is.GreaterThanOrEqualTo(1));
+			var adSupportedStreaming = releaseTracks.Tracks.Select(t => t.AdSupportedStreaming);
+			Assert.That(adSupportedStreaming, Is.All.Not.Null);
+		}
+
+		[Test]
 		public async Task Tracks_have_download_when_requested()
 		{
 			var request = _api.Create<ReleaseTracks>()
