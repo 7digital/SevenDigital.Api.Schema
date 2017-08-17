@@ -136,6 +136,28 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		}
 
 		[Test]
+		public async Task Should_return_ad_supported_streaming_when_requested()
+		{
+			var ids = new List<int> { FirstId };
+			var request = _api.Create<ReleasesBatch>()
+				.WithParameter("releaseids", ids)
+				.ForUsageTypes(UsageType.AdSupportedStreaming)
+				.ForShop(34);
+
+			var response = await request.Please();
+
+			Assert.That(response, Is.Not.Null);
+
+			Assert.That(response.Releases, Is.Not.Null);
+			Assert.That(response.Releases.Count, Is.EqualTo(1));
+
+			var adSupportedStreaming = response.Releases.Select(r => r.AdSupportedStreaming).ToList();
+			Assert.That(adSupportedStreaming.Count, Is.EqualTo(1));
+			Assert.That(adSupportedStreaming[0], Is.Not.Null);
+			Assert.That(adSupportedStreaming[0].ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
 		public async Task Should_return_download_when_requested()
 		{
 			var ids = new List<int> { FirstId, SecondId };

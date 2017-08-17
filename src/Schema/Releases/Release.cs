@@ -57,6 +57,9 @@ namespace SevenDigital.Api.Schema.Releases
 		[XmlElement("subscriptionStreaming")]
 		public Streaming SubscriptionStreaming { get; set; }
 
+		[XmlElement("adSupportedStreaming")]
+		public Streaming AdSupportedStreaming { get; set; }
+
 		[XmlElement("slug")]
 		public string Slug { get; set; }
 

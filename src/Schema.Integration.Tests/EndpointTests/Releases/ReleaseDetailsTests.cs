@@ -109,6 +109,20 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		}
 
 		[Test]
+		public async Task Release_has_ad_supported_streaming_when_requested()
+		{
+			var request = _api.Create<Release>()
+				.ForReleaseId(1685647)
+				.WithParameter("country", "GB")
+				.ForUsageTypes(UsageType.AdSupportedStreaming);
+
+			var release = await request.Please();
+
+			Assert.That(release.AdSupportedStreaming, Is.Not.Null);
+			Assert.That(release.AdSupportedStreaming.ReleaseDate, Is.Not.EqualTo(default(DateTime)));
+		}
+
+		[Test]
 		public async Task Release_has_download_when_requested()
 		{
 			var request = _api.Create<Release>()
