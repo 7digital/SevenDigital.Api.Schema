@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
-using SevenDigital.Api.Schema.Packages;
 using SevenDigital.Api.Schema.Releases;
 using SevenDigital.Api.Wrapper;
 
@@ -121,7 +120,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 				.ForUsageTypes(UsageType.SubscriptionStreaming)
 				.ForShop(34);
 
-
 			var response = await request.Please();
 
 			Assert.That(response, Is.Not.Null);
@@ -166,7 +164,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 				.ForUsageTypes(UsageType.Download)
 				.ForShop(34);
 
-
 			var response = await request.Please();
 
 			Assert.That(response, Is.Not.Null);
@@ -198,6 +195,5 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(releaseSlugs, Is.All.Not.Null);
 			Assert.That(artistSlugs, Is.All.Not.Null);
 		}
-
 	}
 }
