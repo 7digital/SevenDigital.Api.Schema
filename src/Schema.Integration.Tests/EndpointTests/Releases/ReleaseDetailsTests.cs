@@ -151,6 +151,20 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			Assert.That(release.Artist.Slug, Is.Not.Null);
 		}
 
+		[Test]
+		public async Task Release_has_cline_and_pline()
+		{
+			var request = _api.Create<Release>()
+				.ForReleaseId(12345)
+				.WithParameter("country", "GB")
+				.ForUsageTypes(UsageType.Download, UsageType.SubscriptionStreaming);
+
+			var release = await request.Please();
+			Assert.That(release.Cline, Is.Not.Null);
+			Assert.That(release.Pline, Is.Not.Null);
+		}
+
+
 		private async Task<Release> GetTestRelease()
 		{
 			var request = _api.Create<Release>()

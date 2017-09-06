@@ -63,6 +63,13 @@ namespace SevenDigital.Api.Schema.Releases
 		[XmlElement("slug")]
 		public string Slug { get; set; }
 
+		[XmlElement("cline")]
+		public string Cline { get; set; }
+
+		[XmlElement("pline")]
+		public string Pline { get; set; }
+
+
 		public override string ToString()
 		{
 			return string.Format("{0}: {1} {2} {3}, Barcode {4}", Id, Title, Version, Type, Barcode);
