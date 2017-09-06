@@ -160,9 +160,21 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 				.ForTrackId(12345)
 				.ForUsageTypes(UsageType.SubscriptionStreaming, UsageType.Download);
 			var track = await request.Please();
+
 			Assert.That(track.Artist.Slug, Is.Not.Null);
 			Assert.That(track.Release.Slug, Is.Not.Null);
 			Assert.That(track.Release.Artist.Slug, Is.Not.Null);
+		}
+
+		[Test]
+		public async Task Track_has_pline()
+		{
+			var request = _api.Create<Track>()
+				.ForTrackId(12345)
+				.ForUsageTypes(UsageType.SubscriptionStreaming, UsageType.Download);
+			var track = await request.Please();
+
+			Assert.That(track.Pline, Is.Not.Null);
 		}
 
 		private async Task<Track> GetTestTrack()
