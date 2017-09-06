@@ -18,7 +18,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<TrackChart>()
-				.WithParameter("country", "GB");
+				.WithParameter("country", "GB")
+                .ForUsageTypes(UsageType.Download);
 			var trackChart = await request.Please();
 
 			Assert.That(trackChart, Is.Not.Null);
@@ -32,7 +33,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		{
 			var request = _api.Create<TrackChart>()
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download);
 			TrackChart trackChart = await request.Please();
 
 			Assert.That(trackChart, Is.Not.Null);
@@ -44,7 +46,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		public async Task Can_hit_fluent_endpoint()
 		{
 			var request = _api.Create<TrackChart>()
-				.WithPeriod(ChartPeriod.Week);
+				.WithPeriod(ChartPeriod.Week)
+                .ForUsageTypes(UsageType.Download);
 			var trackChart = await request.Please();
 
 			Assert.That(trackChart, Is.Not.Null);

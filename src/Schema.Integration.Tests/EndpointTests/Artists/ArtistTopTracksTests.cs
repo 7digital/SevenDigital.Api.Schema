@@ -19,7 +19,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			var artistTopTracks = await _api.Create<ArtistTopTracks>()
 				.WithParameter("artistId", "1")
 				.WithParameter("country", "GB")
-				.Please();
+                .ForUsageTypes(UsageType.Download)
+                .Please();
 
 			Assert.That(artistTopTracks, Is.Not.Null);
 			Assert.That(artistTopTracks.Tracks.Count, Is.GreaterThan(0));
@@ -31,7 +32,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			var artistTopTracks = await _api.Create<ArtistTopTracks>()
 				.WithArtistId(1)
 				.WithParameter("country", "GB")
-				.Please();
+                .ForUsageTypes(UsageType.Download)
+                .Please();
 
 			Assert.That(artistTopTracks, Is.Not.Null);
 			Assert.That(artistTopTracks.Tracks.Count, Is.GreaterThan(0));
@@ -44,6 +46,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 				.WithParameter("artistId", "1")
 				.WithParameter("page", "100")
 				.WithParameter("pageSize", "10")
+                .ForUsageTypes(UsageType.Download)
 				.Please();
 
 			Assert.That(artistTopTracks, Is.Not.Null);

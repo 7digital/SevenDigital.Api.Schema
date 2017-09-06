@@ -16,7 +16,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<TrackSearch>()
-				.WithParameter("q", "Happy");
+				.WithParameter("q", "Happy")
+                .ForUsageTypes(UsageType.Download);
 			var trackSearch = await request.Please();
 
 			Assert.That(trackSearch, Is.Not.Null);
@@ -30,7 +31,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var request = _api.Create<TrackSearch>()
 				.WithParameter("q", "Happy")
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download);
 			var trackSearch = await request.Please();
 
 			Assert.That(trackSearch, Is.Not.Null);

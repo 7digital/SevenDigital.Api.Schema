@@ -18,7 +18,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleaseSearch>()
 				.WithParameter("q", "no surprises")
 				.WithParameter("type", ReleaseType.Single.ToString())
-				.WithParameter("country", "GB");
+				.WithParameter("country", "GB")
+                .ForUsageTypes(UsageType.Download);
 			var releaseSearch = await request.Please();
 
 			Assert.That(releaseSearch, Is.Not.Null);
@@ -32,7 +33,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleaseSearch>()
 				.WithParameter("q", "no surprises")
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download);
 			var releaseSearch = await request.Please();
 
 			Assert.That(releaseSearch, Is.Not.Null);
@@ -46,7 +48,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleaseSearch>()
 				.WithParameter("q", "pink")
 				.WithParameter("page", "1")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download, UsageType.AdSupportedStreaming, UsageType.SubscriptionStreaming);
 			var releaseSearch = await request.Please();
 
 			Assert.That(releaseSearch.Results.Count, Is.GreaterThan(1));

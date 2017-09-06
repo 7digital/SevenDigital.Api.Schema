@@ -25,7 +25,9 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleaseByDate>()
 				.WithParameter("fromDate", DateTime.Now.AddDays(-7).ToString("yyyyMMdd"))
 				.WithParameter("toDate", DateTime.Now.ToString("yyyyMMdd"))
-				.WithParameter("country", "GB");
+				.WithParameter("country", "GB")
+                .WithParameter("usageTypes", "download");
+
 			var release = await request.Please();
 
 			Assert.That(release, Is.Not.Null);
@@ -39,7 +41,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 				.WithParameter("fromDate", "20140901")
 				.WithParameter("toDate", "20140930")
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .WithParameter("usageTypes", "download");
 			var releaseByDate = await request.Please();
 
 			Assert.That(releaseByDate, Is.Not.Null);

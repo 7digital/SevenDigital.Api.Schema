@@ -16,7 +16,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseRecommend>()
 				.ForReleaseId(155408)
-				.WithParameter("country", "GB");
+				.WithParameter("country", "GB")
+                .ForUsageTypes(UsageType.Download);
 			var release = await request.Please();
 
 			Assert.That(release, Is.Not.Null);

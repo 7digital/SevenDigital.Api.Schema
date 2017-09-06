@@ -25,7 +25,9 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<ReleaseChart>()
-				.WithParameter("country", "GB");
+				.WithParameter("country", "GB")
+                .ForUsageTypes(UsageType.Download,UsageType.AdSupportedStreaming,UsageType.SubscriptionStreaming);
+
 			var releaseChart = await request.Please();
 
 			Assert.That(releaseChart, Is.Not.Null);
@@ -38,7 +40,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseChart>()
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download);
 			var releaseChart = await request.Please();
 
 			Assert.That(releaseChart, Is.Not.Null);
@@ -51,7 +54,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		{
 			var request = _api.Create<ReleaseChart>()
 				.WithToDate(new DateTime(2011, 01, 31))
-				.WithPeriod(ChartPeriod.Week);
+				.WithPeriod(ChartPeriod.Week)
+                .ForUsageTypes(UsageType.Download, UsageType.AdSupportedStreaming, UsageType.SubscriptionStreaming);
 			var releaseChart = await request.Please();
 
 			Assert.That(releaseChart, Is.Not.Null);

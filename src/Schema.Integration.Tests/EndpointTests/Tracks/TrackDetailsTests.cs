@@ -168,7 +168,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 		private async Task<Track> GetTestTrack()
 		{
 			var request = _api.Create<Track>()
-				.ForTrackId(12345);
+				.ForTrackId(12345)
+                .ForUsageTypes(UsageType.Download);
 			return await request.Please();
 		}
 	}

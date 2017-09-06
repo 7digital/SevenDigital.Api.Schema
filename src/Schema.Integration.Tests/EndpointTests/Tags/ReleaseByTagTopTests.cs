@@ -17,7 +17,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<ReleaseByTagTop>()
-				.WithParameter("tags", "rock");
+				.WithParameter("tags", "rock")
+                .ForUsageTypes(UsageType.Download);
 			var tags = await request.Please();
 
 			Assert.That(tags, Is.Not.Null);
@@ -32,7 +33,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tags
 			var request = _api.Create<ReleaseByTagTop>()
 				.WithParameter("tags", "rock")
 				.WithParameter("page", "2")
-				.WithParameter("pageSize", "20");
+				.WithParameter("pageSize", "20")
+                .ForUsageTypes(UsageType.Download);
 			var releaseByTag = await request.Please();
 
 			Assert.That(releaseByTag, Is.Not.Null);

@@ -16,7 +16,9 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 		public async Task Can_hit_endpoint_with_fluent_interface()
 		{
 			var request = _api.Create<ArtistReleases>()
-				.WithArtistId(1);
+				.WithArtistId(1)
+                .ForUsageTypes(UsageType.Download);
+
 			var artistReleases = await request.Please();
 
 			Assert.That(artistReleases, Is.Not.Null);
@@ -30,7 +32,9 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 			var request = _api.Create<ArtistReleases>()
 				.WithPageNumber(2)
 				.WithPageSize(20)
-				.WithParameter("artistId", "1");
+				.WithParameter("artistId", "1")
+                .ForUsageTypes(UsageType.Download);
+
 			var artistBrowse = await request.Please();
 			
 			Assert.That(artistBrowse, Is.Not.Null);

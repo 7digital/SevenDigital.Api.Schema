@@ -22,7 +22,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.ForShop(34);
+				.ForShop(34)
+                .ForUsageTypes(UsageType.Download);
 
 			var response = await request.Please();
 
@@ -41,7 +42,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { SecondId, FirstId };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.ForShop(34);
+				.ForShop(34)
+                .ForUsageTypes(UsageType.Download);
 
 			var response = await request.Please();
 			var tracks = response.Tracks;
@@ -58,7 +60,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
 				.WithParameter("showErrors", "true")
-				.ForShop(34);
+				.ForShop(34)
+                .ForUsageTypes(UsageType.Download);
 
 			var response = await request.Please();
 
@@ -80,7 +83,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
 				.WithParameter("showErrors", "true")
-				.ForShop(34);
+				.ForShop(34)
+                .ForUsageTypes(UsageType.Download);
 
 			var response = await request.Please();
 
@@ -98,7 +102,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 			var ids = new List<int> { FirstId, SecondId, -1, -2 };
 			var request = _api.Create<TracksBatch>()
 				.WithParameter("trackids", ids)
-				.ForShop(34);
+				.ForShop(34)
+                .ForUsageTypes(UsageType.Download);
 
 			var response = await request.Please();
 

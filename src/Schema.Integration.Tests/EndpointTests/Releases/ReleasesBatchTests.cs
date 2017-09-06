@@ -23,7 +23,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { FirstId, SecondId };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.ForShop(34);
+                .ForUsageTypes(UsageType.Download)
+                .ForShop(34);
 
 			var response = await request.Please();
 
@@ -43,7 +44,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { SecondId, FirstId };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.ForShop(34);
+                .ForUsageTypes(UsageType.Download)
+                .ForShop(34);
 
 			var response = await request.Please();
 			var releases = response.Releases;
@@ -60,7 +62,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
 				.WithParameter("showErrors", "true")
-				.ForShop(34);
+                .ForUsageTypes(UsageType.Download)
+                .ForShop(34);
 
 			var response = await request.Please();
 
@@ -80,7 +83,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
 				.WithParameter("showErrors", "true")
-				.ForShop(34);
+                .ForUsageTypes(UsageType.Download)
+                .ForShop(34);
 
 			var response = await request.Please();
 
@@ -98,7 +102,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var ids = new List<int> { FirstId, SecondId, -1, -2 };
 			var request = _api.Create<ReleasesBatch>()
 				.WithParameter("releaseids", ids)
-				.ForShop(34);
+                .ForUsageTypes(UsageType.Download)
+                .ForShop(34);
 
 			var response = await request.Please();
 

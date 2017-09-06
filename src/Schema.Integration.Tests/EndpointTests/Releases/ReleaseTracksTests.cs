@@ -17,7 +17,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Can_hit_endpoint()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(1996067);
+				.ForReleaseId(1996067)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks, Is.Not.Null);
@@ -33,7 +34,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 			var modernTimes = new DateTime(1990, 1, 1);
 
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(1996067);
+				.ForReleaseId(1996067)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 			var track = releaseTracks.Tracks.FirstOrDefault();
 
@@ -54,7 +56,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Track_has_download_package_price()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(2910562);
+				.ForReleaseId(2910562)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 			var track = releaseTracks.Tracks.First();
 			var primaryPackage = track.Download.PrimaryPackage();
@@ -68,7 +71,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task Track_has_download_package_formats()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(1996067);
+				.ForReleaseId(1996067)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 			var track = releaseTracks.Tracks.First();
 			var primaryPackage = track.Download.PrimaryPackage();
@@ -82,7 +86,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task can_determine_if_a_track_is_free()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(2993739);
+				.ForReleaseId(2993739)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks, Is.Not.Null);
@@ -102,7 +107,8 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Releases
 		public async Task can_determine_if_a_track_is_available_separately()
 		{
 			var request = _api.Create<ReleaseTracks>()
-				.ForReleaseId(2910562);
+				.ForReleaseId(2910562)
+                .ForUsageTypes(UsageType.Download);
 			var releaseTracks = await request.Please();
 
 			Assert.That(releaseTracks, Is.Not.Null);
