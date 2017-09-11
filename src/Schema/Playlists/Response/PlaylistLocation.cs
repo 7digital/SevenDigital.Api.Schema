@@ -32,7 +32,7 @@ namespace SevenDigital.Api.Schema.Playlists.Response
 		public string Image { get; set; }
 
 		[XmlElement("status")]
-		public PlaylistStatusType Status { get; set; }
+		public string Status { get; set; }
 
 		[XmlArray("tags")]
 		[XmlArrayItem("tag")]
