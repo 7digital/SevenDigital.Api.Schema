@@ -111,6 +111,7 @@
     <Compile Include="Playlists\AnnotationsJsonConverter.cs" />
     <Compile Include="Playlists\HasPlaylistIdParameter.cs" />
     <Compile Include="Playlists\HasPlaylistTrackIdParameter.cs" />
+    <Compile Include="Playlists\PlaylistStatusType.cs" />
     <Compile Include="Playlists\PlaylistVisibilityType.cs" />
     <Compile Include="Playlists\Product.cs" />
     <Compile Include="Playlists\Requests\PlaylistDetailsRequest.cs" />

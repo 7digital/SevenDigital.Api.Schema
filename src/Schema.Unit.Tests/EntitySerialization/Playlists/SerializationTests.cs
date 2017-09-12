@@ -37,7 +37,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 			Assert.That(playlist.Id, Is.EqualTo("51ed5cfec9021614f462bb7b"));
 			Assert.That(playlist.Name, Is.EqualTo("party time"));
 			Assert.That(playlist.Description, Is.EqualTo("Hits to get the party started"));
-			Assert.That(playlist.Status, Is.EqualTo("Published"));
+			Assert.That(playlist.Status, Is.EqualTo(PlaylistStatusType.Published));
 			Assert.That(playlist.Visibility, Is.EqualTo(PlaylistVisibilityType.Public));
 			Assert.That(playlist.ImageUrl, Is.EqualTo("http://artwork-cdn.7static.com/static/img/sleeveart/00/004/963/0000496338_$size$.jpg"));
 
@@ -82,7 +82,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 			Assert.That(playlist.Id, Is.EqualTo("51ed5cfec9021614f462bb7b"));
 			Assert.That(playlist.Name, Is.EqualTo("party time"));
 			Assert.That(playlist.Description, Is.EqualTo("Hits to get the party started"));
-			Assert.That(playlist.Status, Is.EqualTo("published"));
+			Assert.That(playlist.Status, Is.EqualTo(PlaylistStatusType.Published));
 			Assert.That(playlist.Visibility, Is.EqualTo(PlaylistVisibilityType.Public));
 			Assert.That(playlist.ImageUrl, Is.EqualTo("http://artwork-cdn.7static.com/static/img/sleeveart/00/004/963/0000496338_$size$.jpg"));
 
@@ -118,7 +118,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 					new Product { TrackId = "12345" },
 					new Product { TrackId = "98765"}
 				},
-				Status = "Published",
+				Status = PlaylistStatusType.Published,
 				Tags = new List<Tag>
 				{
 					new Tag { Name = "tag1", PlaylistPosition = 1 },
@@ -163,7 +163,7 @@ namespace SevenDigital.Api.Schema.Unit.Tests.EntitySerialization.Playlists
 					new Product { TrackId = "12345" },
 					new Product { TrackId = "98765"}
 				},
-				Status = "Published",
+				Status = PlaylistStatusType.Published,
 				Tags = new List<Tag>
 				{
 					new Tag { Name="tag1", PlaylistPosition=1 },
