@@ -28,8 +28,23 @@ namespace SevenDigital.Api.Schema.Playlists.Response.Endpoints
 		[XmlElement("visibility")]
 		public PlaylistVisibilityType Visibility { get; set; }
 
+		[XmlIgnore]
+		public PlaylistStatusType Status
+		{
+			get
+			{
+				PlaylistStatusType status;
+				Enum.TryParse(CustomStatus, true, out status);
+				return status;
+			}
+			set
+			{
+				CustomStatus = value.ToString();
+			}
+		}
+
 		[XmlElement("status")]
-		public PlaylistStatusType Status { get; set; }
+		public string CustomStatus { get; set;}
 
 		[XmlElement("description")]
 		public string Description { get; set; }

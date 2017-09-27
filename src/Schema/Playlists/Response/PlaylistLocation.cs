@@ -31,8 +31,23 @@ namespace SevenDigital.Api.Schema.Playlists.Response
 		[XmlElement("image")]
 		public string Image { get; set; }
 
+		[XmlIgnore]
+		public PlaylistStatusType Status
+		{
+			get
+			{
+				PlaylistStatusType status;
+				Enum.TryParse(CustomStatus, true, out status);
+				return status;
+			}
+			set
+			{
+				CustomStatus = value.ToString();
+			}
+		}
+
 		[XmlElement("status")]
-		public PlaylistStatusType Status { get; set; }
+		public string CustomStatus { get; set;}
 
 		[XmlArray("tags")]
 		[XmlArrayItem("tag")]
