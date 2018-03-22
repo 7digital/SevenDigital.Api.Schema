@@ -19,7 +19,6 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Tracks
 
 			Assert.That(track, Is.Not.Null);
 			Assert.That(track.Title, Is.EqualTo("I Love You"));
-			Assert.That(track.TrackNumber, Is.EqualTo(5));
 			Assert.That(track.Number, Is.EqualTo(5));
 			Assert.That(track.DiscNumber, Is.EqualTo(1));
 		}

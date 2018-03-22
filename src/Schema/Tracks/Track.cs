@@ -25,13 +25,6 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("artist")]
 		public Artist Artist { get; set; }
 
-		/// <summary>
-		/// Track number or in cases where disc number is greater than 1, it is the discNumber + trackNumber (ie 203)
-		/// </summary>
-		/// <remarks>Will soon be decommissioned</remarks>
-		[XmlElement("trackNumber")]
-		public int TrackNumber { get; set; }
-
 		[XmlElement("duration")]
 		public int Duration { get; set; }
 
@@ -54,9 +47,6 @@ namespace SevenDigital.Api.Schema.Tracks
 		[XmlElement("discNumber")]
 		public int DiscNumber { get; set; }
 
-		/// <summary>
-		/// Track Number. Should be used instead of "TrackNumber"
-		/// </summary>
 		[XmlElement("number")]
 		public int Number { get; set; }
 
