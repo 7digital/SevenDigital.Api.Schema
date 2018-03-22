@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SevenDigital.Api.Schema.Integration.Tests.Infrastructure;
-using SevenDigital.Api.Schema.Purchasing;
 using SevenDigital.Api.Schema.Users;
 using SevenDigital.Api.Wrapper;
 
