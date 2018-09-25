@@ -50,6 +50,7 @@ TestResult.xml
 *.log
 *.vspscc
 *.vssscc
+*.vs
 .builds
 *.pidb
 *.svclog
