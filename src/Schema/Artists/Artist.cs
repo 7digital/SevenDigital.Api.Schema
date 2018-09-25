@@ -25,9 +25,6 @@ namespace SevenDigital.Api.Schema.Artists
 		[XmlElement("image")]
 		public string Image { get; set; }
 
-		[XmlElement("url")]
-		public string Url { get; set; }
-
 		[XmlElement("slug")]
 		public string Slug { get; set; }
 

@@ -50,7 +50,7 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Artists
 
 			Assert.That(no1.Artist.Id, Is.GreaterThan(0));
 			Assert.That(no1.Artist.Name, Is.Not.Empty);
-			Assert.That(no1.Artist.Url, Is.Not.Null.Or.Empty);
+			Assert.That(no1.Artist.Slug, Is.Not.Null.Or.Empty);
 			Assert.That(no1.Artist.Image, Is.Not.Null.Or.Empty);
 		}
 	}

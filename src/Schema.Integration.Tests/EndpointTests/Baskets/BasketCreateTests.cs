@@ -104,10 +104,10 @@ namespace SevenDigital.Api.Schema.Integration.Tests.EndpointTests.Baskets
 				.ForReleaseId(EXPECTED_RELEASE_ID);
 			var basket = await request.Please();
 
-			Assert.That(basket.BasketItems.First().AmountDue.Amount, Is.EqualTo("8.49"));
-			Assert.That(basket.BasketItems.First().AmountDue.FormattedAmount, Is.EqualTo("£8.49"));
-			Assert.That(basket.AmountDue.Amount, Is.EqualTo("8.49"));
-			Assert.That(basket.AmountDue.FormattedAmount, Is.EqualTo("£8.49"));
+			Assert.That(basket.BasketItems.First().AmountDue.Amount, Is.EqualTo("8.99"));
+			Assert.That(basket.BasketItems.First().AmountDue.FormattedAmount, Is.EqualTo("£8.99"));
+			Assert.That(basket.AmountDue.Amount, Is.EqualTo("8.99"));
+			Assert.That(basket.AmountDue.FormattedAmount, Is.EqualTo("£8.99"));
 		}
 
 		private async Task<string> MakeBasket()
